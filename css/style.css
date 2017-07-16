@@ -53,7 +53,7 @@ header{
 /* 头部滑条导航部分 START */
 #indexPage{
 	width:50px;
-	height:100%;
+	height:40px;
 	position: absolute;
 	top:0;
 	left:0;
@@ -270,7 +270,6 @@ header{
 		font-size:0.40rem;
 	}
 	#marquee .swiper-slide a{
-		display:block;
 		padding:5px 0;
 	}
 	#marquee .swiper-slide a:before{
@@ -329,6 +328,7 @@ header{
 	
 /*主页样式部分 END*/
 	/*common style*/
+	.h120{height:1.2rem;}
 	.h250{height:2.5rem;}
 	.h280{height:2.8rem;}
 	.h350{height:3.5rem;}
@@ -351,17 +351,8 @@ header{
 	.col4 a{
 		width:calc(100%/4);
 	}
-	.block-title{
+	.block-title img{
 		width: 100%;
-		height:1.2rem;
-		color:#4d4d4d;
-		background:#fafafa;
-		font-size:0.42rem;
-		text-align: center;
-		line-height: 1.2rem;
-	}
-	.block-title em{
-		font-size:0.34rem;
 	}
 	.banner-wrap{
 		width:100%;
