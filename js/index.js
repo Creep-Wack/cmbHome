@@ -3,7 +3,7 @@
 	var _oW = window.screen.width;
 
 	var CmbIndex={};
-	CmbIndex.loadAdvertisement = function(_url){//
+	CmbIndex.loadAdvertisement = function(_url){//装载首页广告
 		$.ajax({
 			type:'GET',
 			url:_url,
@@ -12,18 +12,36 @@
 				console.log('error'+arguments[1]);
 			},
 			success:function(data){
-				var content='';
-				$.each(data,function(ind,obj){
-					if(obj.ModelSysno==-1){
+				// var htmlObj={};
+				// htmlObj.bannerObj = $.grep(data,function(obj){
+				// 	return obj.ModelType==1&&obj.ModelSysno==-1
+				// });
+				var content;
+				$.each(data,function(ind,obj){//一级遍历原始JSON对象
+					if(obj.ModelSysno==-1||obj.ModelType==1){//组装首页轮播
 						content="<div class=\"banner-slide swiper-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 						$('#banner-slider-wrap').append(content);
 					}
+					else if(obj.ModelSysno==-2||obj.ModelType==2){//专区图标
+						content= "<li><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></li>";
+						$('#nav-tab').append(content);
+					}
+					else if(obj.ModelSysno==-3||obj.ModelType==3){//跑马灯
+						content= "<li class=\"swiper-slide\"><a href=\""+obj.Link+"\">"+obj.marqueeText+"</a></li>";
+						$('#marquee-wrap').append(content);
+					}
+					else if(obj.ModelSysno==-5||obj.ModelType==5){//底部TAB
+						content= "<li><a href=\""+obj.Link+"\"><img src=\""+obj.ResourceUrl+"\"></a></li>";
+						$('#footer-wrap').append(content);
+					}
+
 				});
 				//首页通栏轮播Swiper
 				var bannerSwiper = new Swiper('.banner-swiper-container',{
 					autoplay:3000,
 					pagination : '.banner-pagination',
 					loop:true,
+					setWrapperSize :true,
 					autoplayDisableOnInteraction:false,
 					observer:true
 				});
@@ -33,6 +51,12 @@
 		});
 	}
 	CmbIndex.loadAdvertisement('./res/test.json');
+	// Cmb.build = function(type,obj){
+	// 	switch(type){
+	// 		case -1:
+
+	// 	}
+	// }
 	//img懒加载START
 
 	 var imgObj=$(".show-slide img");
