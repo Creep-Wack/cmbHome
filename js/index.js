@@ -1,53 +1,47 @@
 (function(){
 
 	var _oW = window.screen.width;
-	// function doAjaxCall(_url){
-	// 	var request = null;
-	// 	if(window.XMLHttpRequest){
-	// 		request = new XMLHttpRequest();
-	// 	}
-	// 	else if(window.ActiveObject){
-	// 		request = new ActiveObject('Microsoft.XMLHTTP');
-	// 	}
 
-	// 	if(request){
-	// 		request.open('GET',_url,true);
-	// 		request.onreadystatechange = function(){
-	// 			if(request.readyState===4){
-	// 				if(request.status==200||request.status==0){
-	// 					return request.responseText;
-	// 				}
-	// 			}
-	// 		}
-	// 		request.send(null);
-	// 	}else{
-	// 		alert('error');
-	// 	}
-	// }
-	// var result = doAjaxCall('./src/resource.json');
-
-
-		$(function(){
-			$.ajax({
-				type:'GET',
-				url:'./res/test.json',
-				dataType:'json',
-				error:function(data){
-					console.log(arguments[1]);
-				},
-				success:function(data){
-					console.log(data);
-				}
-			});
+	var CmbIndex={};
+	CmbIndex.loadAdvertisement = function(_url){//
+		$.ajax({
+			type:'GET',
+			url:_url,
+			dataType:'json',
+			error:function(data){
+				console.log('error'+arguments[1]);
+			},
+			success:function(data){
+				var content='';
+				$.each(data,function(ind,obj){
+					if(obj.ModelSysno==-1){
+						content="<div class=\"banner-slide swiper-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+						$('#banner-slider-wrap').append(content);
+					}
+				});
+				//首页通栏轮播Swiper
+				var bannerSwiper = new Swiper('.banner-swiper-container',{
+					autoplay:3000,
+					pagination : '.banner-pagination',
+					loop:true,
+					autoplayDisableOnInteraction:false,
+					observer:true
+				});
+				
+				lazyL();
+			}
 		});
-		// console.log(htmlobj);
-	//img懒加载
+	}
+	CmbIndex.loadAdvertisement('./res/test.json');
+	//img懒加载START
 
 	 var imgObj=$(".show-slide img");
 	 var imgMark=0;
 
 	 window.onscroll=lazyL;
 	 function lazyL(){//懒加载
+	 	imgMark=0;
+		imgObj=$(".show-slide img");
 	   var seeHeight = document.documentElement.clientHeight;
 	   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//兼容chrome
 	   for(var i=imgMark;i<imgObj.length;i++){
@@ -63,6 +57,7 @@
 	   }
 	 }
 	 lazyL();
+	 //END
 
 	// for rem  根文字大小调整
 	(function (doc, win) {
@@ -101,40 +96,18 @@
 	Slide.addAct = function(num){//更改激活nav
 		$('.slide-nav').removeClass('active').eq(num).addClass('active');
 	}
-	// Slide.moveTo = function(len){//红色横条跟随动画(滑动页面时)
-	// 	var nextWidth = $('.active').next().width();
-	// 	var move_len = -(len%_oW)/_oW*50;
-	// 	$('#slide-line').css('left',Slide.init_len+move_len+'px');
-	// }
-	Slide.animateTo = function(t){//红色横条跟随动画(释放时)
-		$('#slide-line').animate(
-			{
-				'left':$('.slide-nav.active').offset().left+'px',
-				'width':$('.slide-nav.active').width()+'px'
-			},t,function(){
-				$('.slide-nav.active em').css('display','block');
-				$('#slide-line').css({
-					'opacity':'0',
-					'left':$('.slide-nav.active').offset().left+'px'
-				});
-		});
-	}
-	Slide.Start = function(){
-		$('.slide-nav.active em').css('display','none');
-		$('#slide-line').css('opacity','1');
-		
-	}
-	// Slide.jumpTo = function(ind){
-	// 	$('.slide-nav').removeClass('active').eq(ind).addClass('active');
-	// 	navSwiper.slideTo(ind-3);
-	// 	mainSwiper.slideTo(ind);
-	// }
+	$('.slide-nav').click(function(){
+		Slide.ifClick=true;
+		var ind = $('.slide-nav').index($(this));
+		$('.slide-nav').removeClass('active').eq(ind).addClass('active');
+		mainSwiper.slideTo(ind);
+	});
 
 
 	  
 
 	//Swiper部分
-	//主页面Swiper
+	//主页面整体Swiper
 	var mainSwiper = new Swiper('.main-swiper-container',{
 		autoHeight:true,
 		resistanceRatio : 0,
@@ -158,29 +131,12 @@
 
 	});
 
-	//导航Swiper	
 	var navSwiper = new Swiper('.nav-swiper-container',{
 		setWrapperSize :true,
 		slidesPerView : 'auto'
 	});
 
-	$('.slide-nav').click(function(){
-		Slide.ifClick=true;
-		var ind = $('.slide-nav').index($(this));
-		$('.slide-nav').removeClass('active').eq(ind).addClass('active');
-		mainSwiper.slideTo(ind);
-		Slide.End();	
-
-	});
-
-	//首页通栏轮播Swiper
-	var bannerSwiper = new Swiper('.banner-swiper-container',{
-		autoplay:3000,
-		pagination : '.banner-pagination',
-		loop:true,
-		autoplayDisableOnInteraction:false
-	});
-
+	
 	//首页跑马灯Swiper
 	var marqueeSwiper = new Swiper('.marquee-swiper-container',{
 		direction:'vertical',
