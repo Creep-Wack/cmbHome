@@ -1,4 +1,4 @@
-(function(){
+window.onload = function(){
 	// for rem  根文字大小调整
 	(function (doc, win) {
 	    var docEl     = doc.documentElement,
@@ -74,7 +74,7 @@
 			success:function(data){
 				var content;
 				$.each(data,function(ind,obj){//一级遍历原始JSON对象
-					if(obj.ModelType==1){//组装首页轮播
+					if(obj.ModelSysno==-3){//组装首页轮播
 						content="<div class=\"banner-slide swiper-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 						$('#banner-slider-wrap').append(content);
 					}
@@ -209,4 +209,4 @@
 		loop:true,
 		autoplayDisableOnInteraction:false
 	});
-})()
+}
