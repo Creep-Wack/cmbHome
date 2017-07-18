@@ -1,9 +1,40 @@
 (function(){
+	// for rem  根文字大小调整
+	(function (doc, win) {
+	    var docEl     = doc.documentElement,
+	        resizeEvt = "onorientationchange" in window ? "orientationchange" : "resize",
+	        recalc    = function () {
+	             // var clientWidth = docEl.clientWidth;
+	            var clientWidth = document.body.offsetWidth;
+	            if (!clientWidth) return;
+	            docEl.style.fontSize = 100 * (clientWidth / 1080) + "px";
+	        };
+	    recalc();
+	    if (!doc.addEventListener) return;
+	    win.addEventListener(resizeEvt, recalc, false);
+	})(document, window); 
 
+
+// 顶部滑条部分 START
 	var _oW = window.screen.width;
-
-	var CmbIndex={};
-	CmbIndex.loadAdvertisement = function(_url){//装载首页广告
+	var Slide = {
+		ifClick:false
+	};//Slide小滑条对象
+	Slide.addAct = function(num){//更改激活nav
+		$('.slide-nav').removeClass('active').eq(num).addClass('active');
+	}
+	$('#navCont').delegate('.slide-nav','click',function(){
+		Slide.ifClick=true;
+		var ind = $('.slide-nav').index($(this));
+		$('.slide-nav').removeClass('active').eq(ind).addClass('active');
+		mainSwiper.slideTo(ind);
+	});
+	var navSwiper = new Swiper('.nav-swiper-container',{
+		setWrapperSize :true,
+		slidesPerView : 'auto',
+		observer:true
+	});
+	Slide.loadSlide = function(_url){//装载顶部导航
 		$.ajax({
 			type:'GET',
 			url:_url,
@@ -12,25 +43,50 @@
 				console.log('error'+arguments[1]);
 			},
 			success:function(data){
-				// var htmlObj={};
-				// htmlObj.bannerObj = $.grep(data,function(obj){
-				// 	return obj.ModelType==1&&obj.ModelSysno==-1
-				// });
+				var content;
+				$.each(data,function(ind,obj){//遍历原始JSON对象
+					content="<div class=\"swiper-slide slide-nav\"><em></em>"+obj.SecondaryPageName+"</div>";
+						$('#top-nav').append(content);
+						$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"></div>");
+						// navSwiper.slideTo(0);
+				});
+
+
+			}
+		});	
+	}
+
+	Slide.loadSlide('./res/getTab.json');
+
+// 顶部滑条部分  END
+
+
+//首页对象 
+	var CmbIndex={};
+	CmbIndex.loadAdvertisement = function(_url){//装载首页固定模块
+		$.ajax({
+			type:'GET',
+			url:_url,
+			dataType:'json',
+			error:function(data){
+				console.log('error!'+arguments[1]);
+			},
+			success:function(data){
 				var content;
 				$.each(data,function(ind,obj){//一级遍历原始JSON对象
-					if(obj.ModelSysno==-1||obj.ModelType==1){//组装首页轮播
+					if(obj.ModelType==1){//组装首页轮播
 						content="<div class=\"banner-slide swiper-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 						$('#banner-slider-wrap').append(content);
 					}
-					else if(obj.ModelSysno==-2||obj.ModelType==2){//专区图标
+					else if(obj.ModelType==2){//专区图标
 						content= "<li><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></li>";
 						$('#nav-tab').append(content);
 					}
-					else if(obj.ModelSysno==-3||obj.ModelType==3){//跑马灯
+					else if(obj.ModelType==3){//跑马灯
 						content= "<li class=\"swiper-slide\"><a href=\""+obj.Link+"\">"+obj.marqueeText+"</a></li>";
 						$('#marquee-wrap').append(content);
 					}
-					else if(obj.ModelSysno==-5||obj.ModelType==5){//底部TAB
+					else if(obj.ModelType==5){//底部TAB
 						content= "<li><a href=\""+obj.Link+"\"><img src=\""+obj.ResourceUrl+"\"></a></li>";
 						$('#footer-wrap').append(content);
 					}
@@ -50,7 +106,7 @@
 			}
 		});
 	}
-	CmbIndex.loadAdvertisement('./res/test.json');
+	CmbIndex.loadAdvertisement('./res/getAd.json');
 	// Cmb.build = function(type,obj){
 	// 	switch(type){
 	// 		case -1:
@@ -83,20 +139,7 @@
 	 lazyL();
 	 //END
 
-	// for rem  根文字大小调整
-	(function (doc, win) {
-	    var docEl     = doc.documentElement,
-	        resizeEvt = "onorientationchange" in window ? "orientationchange" : "resize",
-	        recalc    = function () {
-	             // var clientWidth = docEl.clientWidth;
-	            var clientWidth = document.body.offsetWidth;
-	            if (!clientWidth) return;
-	            docEl.style.fontSize = 100 * (clientWidth / 1080) + "px";
-	        };
-	    recalc();
-	    if (!doc.addEventListener) return;
-	    win.addEventListener(resizeEvt, recalc, false);
-	})(document, window); 
+	
 	
 
 	//弹屏浮层阻止事件冒泡
@@ -110,31 +153,13 @@
 	$('#close_floatWrap').click(function(){
 		_flWrap.style.display='none';
 	});
-	//顶部滑条跟随
-	var Slide = {
-		init_len:0,
-		ifClick:false
-	};//Slide小滑条对象
-
-
-	Slide.addAct = function(num){//更改激活nav
-		$('.slide-nav').removeClass('active').eq(num).addClass('active');
-	}
-	$('.slide-nav').click(function(){
-		Slide.ifClick=true;
-		var ind = $('.slide-nav').index($(this));
-		$('.slide-nav').removeClass('active').eq(ind).addClass('active');
-		mainSwiper.slideTo(ind);
-	});
-
-
-	  
-
+	//顶部滑条跟随			  
 	//Swiper部分
 	//主页面整体Swiper
 	var mainSwiper = new Swiper('.main-swiper-container',{
 		autoHeight:true,
 		resistanceRatio : 0,
+		observer:true,
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
@@ -155,10 +180,7 @@
 
 	});
 
-	var navSwiper = new Swiper('.nav-swiper-container',{
-		setWrapperSize :true,
-		slidesPerView : 'auto'
-	});
+
 
 	
 	//首页跑马灯Swiper
