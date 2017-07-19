@@ -51,6 +51,58 @@
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
     },
+     {
+        "AdvertisementName": "广告2",
+        "AdvertisemenPageType": 1,
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":1148,
+        "Position": 3,
+        "ResourceUrl": "images/special_01.jpg",
+        "Link": "#############",
+        "Priority": "2",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "AdvertisemenPageType": 1,
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":1148,
+        "Position": 3,
+        "ResourceUrl": "images/special_02.jpg",
+        "Link": "#############",
+        "Priority": "2",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "AdvertisemenPageType": 1,
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":1148,
+        "Position": 3,
+        "ResourceUrl": "images/special_03.jpg",
+        "Link": "#############",
+        "Priority": "2",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "AdvertisemenPageType": 1,
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":1148,
+        "Position": 3,
+        "ResourceUrl": "images/special_04.jpg",
+        "Link": "#############",
+        "Priority": "2",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
     {
         "AdvertisementName": "广告2",
         "AdvertisemenPageType": 1,

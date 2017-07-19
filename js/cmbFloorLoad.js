@@ -53,7 +53,8 @@ Floor.loadBlock = function(style,obj){//页面组装
 			// 			tailHtml="</div></section>";
 			// 	}
 			// }
-			if(lastPosition!=0&&lastPosition!=1&&lastPosition!=v.position){//上一步组装元素与当前组装对象非同类型
+			// console.log(v);
+			if(lastPosition!=0&&lastPosition!=1&&lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
 				counter=0;
 				if(lastPosition==2){
 					_html+="</div><div class=\"common-pagination\"></div></div>";
@@ -62,11 +63,11 @@ Floor.loadBlock = function(style,obj){//页面组装
 					_html+="</div>";
 				}
 			}
-			if(v.position==1){//楼层标题
+			if(v.Position==1){//楼层标题
 				lastPosition=1;
 				_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 			}
-			else if(v.position==2){//360高度轮播
+			else if(v.Position==2){//360高度轮播
 				lastPosition=2;
 				if(!counter){//第一张广告
 					counter++;
@@ -77,10 +78,10 @@ Floor.loadBlock = function(style,obj){//页面组装
 					_html += "<div class=\"swiper-slide\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a></div>";
 				}
 			}
-			else if(v.position==3){
+			else if(v.Position==3){
 				lastPosition=3;
 				
-				if(counter){//第一张540X280高广告位
+				if(!counter){//第一张540X280高广告位
 					counter++;
 					_html += "<div class=\"h280 columns col2 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 				}
@@ -89,10 +90,10 @@ Floor.loadBlock = function(style,obj){//页面组装
 					_html += "<a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 				}
 			}
-			else if(v.position==4){
+			else if(v.Position==4){
 				lastPosition=4;
 				
-				if(counter){//第一张270X360高广告位
+				if(!counter){//第一张270X360高广告位
 					counter++;
 					_html += "<div class=\"h360 columns col4 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 				}
