@@ -40,7 +40,7 @@ Floor.loadBlock = function(style,obj){//页面组装
 	var lastPosition=0;//上一个对象类型
 	// console.log(obj);
 	var tailHtml="";
-	if(style==1148){//1X1X4X8模块 position:1-楼层标题  2-360高度通栏轮播  3-540X280高度一行两列广告位  4-270X360高度一行四列广告位
+	if(style==7){//1X1X4X8模块 position:1-楼层标题  2-360高度通栏轮播  3-540X280高度一行两列广告位  4-270X360高度一行四列广告位
 
 		$.each(obj,function(k,v){
 			tailHtml = Floor.addTail(style,lastPosition,k,obj);
@@ -99,7 +99,7 @@ Floor.loadBlock = function(style,obj){//页面组装
 
 		
 	}
-	else if(style==14){//1X4模块  1-楼层标题  2-540X360 一行两列广告模块
+	else if(style==3){//1X4模块  1-楼层标题  2-540X360 一行两列广告模块
 		$.each(obj,function(k,v){
 			tailHtml = Floor.addTail(style,lastPosition,k,obj);
 			if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
@@ -125,7 +125,7 @@ Floor.loadBlock = function(style,obj){//页面组装
 			counter++;
 		});
 	}
-	else if(style==113){//1X1X3模块  1-120楼层标题  1-360高度通栏横幅 3-商品模块
+	else if(style==6){//1X1X3模块  1-120楼层标题  1-360高度通栏横幅 3-商品模块
 		$.each(obj,function(k,v){
 			tailHtml = Floor.addTail(style,lastPosition,k,obj);
 			if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
@@ -140,7 +140,7 @@ Floor.loadBlock = function(style,obj){//页面组装
 				if(counter==0){//第一张广告
 					_html += "<div class=\"h360 columns col2 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 				}
-				else if(0<counter<=3){//限制广告数量4张以内
+				else if(counter>0){//限制广告数量
 					_html += "<a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 				}
 				else{
@@ -162,7 +162,7 @@ Floor.loadBlock = function(style,obj){//页面组装
 }
 Floor.addTail = function(sty,lastpos,ind,o){//处理模块尾部
 	if(ind==o.length-1){
-		if(sty==1148){
+		if(sty==7){
 			switch (lastpos)
 				{	
 					case 0:
@@ -178,7 +178,7 @@ Floor.addTail = function(sty,lastpos,ind,o){//处理模块尾部
 						break;
 				}
 		}
-		else if(sty==14){
+		else if(sty==3){
 			switch (lastpos)
 				{
 					case 0:
@@ -188,6 +188,20 @@ Floor.addTail = function(sty,lastpos,ind,o){//处理模块尾部
 					case 2:
 						return "</div>";
 						break;
+				}
+		}
+		else if(sty==6){
+			switch (lastpos)
+				{
+					case 0:
+					case 1:
+						return "";
+					 	break;
+					case 2:
+						return "</div><div class=\"common-pagination\"></div></div>";
+						break;
+					case 4:
+						return "</div>";
 				}
 		}
 		else{

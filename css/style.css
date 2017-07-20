@@ -340,11 +340,12 @@ header{
 	
 /*主页样式部分 END*/
 	/*common style*/
-	.h360.goods-list-wrap{
+	.h360.goods-list-wrap,.h360.goods-list-wrap .goods-swiper-container{
 		height:3.6rem;
 	}
 	.h120 a{height:1.2rem;}
 	.h250 a{height:2.5rem;}
+	.h270 a{height:2.5rem;}
 	.h280 a{height:2.8rem;}
 	.h320 a{height:3.2rem;}
 	.h350 a{height:3.5rem;}
