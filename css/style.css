@@ -340,6 +340,9 @@ header{
 	
 /*主页样式部分 END*/
 	/*common style*/
+	.h360.goods-list-wrap{
+		height:3.6rem;
+	}
 	.h120 a{height:1.2rem;}
 	.h250 a{height:2.5rem;}
 	.h280 a{height:2.8rem;}
