@@ -396,6 +396,46 @@ window.onload = function(){
 				counter++;
 			});
 		}
+		else if(style==181){//1X8模块  1-120楼层标题  8-270X320  一列行广告位
+			$.each(obj,function(k,v){
+				tailHtml = Floor.addTail(style,lastPosition,k,obj);
+				if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
+					counter=0;
+					if(lastPosition==2){
+						_html+="</div><div class=\"common-pagination\"></div></div>";
+					}
+				}
+				if(v.Position==1){//楼层标题
+					lastPosition=v.Position;
+					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+				}
+				else if(v.Position==2){//360高度轮播
+					lastPosition=v.Position;
+					if(counter==0){//第一张广告
+						_html += "<div class=\"swiper-container common-h360-banner container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a></div>";
+					}
+					else if(0<counter<=4){//限制广告数量五张以内
+						_html += "<div class=\"swiper-slide\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a></div>";
+					}
+					else{
+						_html+="";
+					}
+				}
+				else if(v.Position==3){//360高度轮播
+					lastPosition=v.Position;
+					if(counter==0){//第一张广告
+						_html += "<div class=\"h360 goods-list-wrap\"><div class=\"swiper-container goods-swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" ></a></div>";
+					}
+					else if(counter>0){//限制广告
+						_html += "<div class=\"swiper-slide\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a></div>"
+					}
+					else{
+						_html+="";
+					}
+				}
+				counter++;
+			});
+		}
 		else{
 			return '';
 		}
