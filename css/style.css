@@ -265,6 +265,7 @@ header{
 		height:1.2rem;
 		padding:0 0.48rem;
 		position: relative;
+		display:none;
 	}
 	#marquee .topline-icon{
 		width:1.85rem;
@@ -397,6 +398,7 @@ header{
 	left:0;
 	background-color:#fafafa;
 	border-top:1px solid #e6e6e6;
+	display:none;
 }
 #footer ul{
 	width:100%;

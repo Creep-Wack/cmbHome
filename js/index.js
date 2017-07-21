@@ -1,3 +1,6 @@
+var _oW = window.screen.width;
+var _URL = './res/getFloor.json';
+
 window.onload = function(){
 	// for rem  根文字大小调整
 	(function (doc, win) {
@@ -16,7 +19,7 @@ window.onload = function(){
 
 
 // 顶部滑条部分 START
-	var _oW = window.screen.width;
+	
 	var Slide = {
 		ifClick:false
 	};//Slide小滑条对象
@@ -47,8 +50,8 @@ window.onload = function(){
 				// console.log(data);
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
-					content+="<div class=\"swiper-slide slide-nav\"><em></em>"+obj.SecondaryPageName+"</div>";
-					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"></div>");
+					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
+					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"><div class=\"floorCont\"></div></div>");
 						
 				});
 				$('#top-nav').append(content);
@@ -87,10 +90,15 @@ window.onload = function(){
 					else if(obj.ModelSysno==-3){//跑马灯
 						content= "<li class=\"swiper-slide\"><a href=\""+obj.Link+"\">"+obj.marqueeText+"</a></li>";
 						$('#marquee-wrap').append(content);
+						$('#marquee').show();
+					}
+					else if(obj.ModelSysno==-4){//每日特惠！！！！！
+						
 					}
 					else if(obj.ModelSysno==-5){//底部TAB
 						content= "<li><a href=\""+obj.Link+"\"><img src=\""+obj.ResourceUrl+"\"></a></li>";
 						$('#footer-wrap').append(content);
+						$('#footer').show();
 					}
 
 				});
@@ -158,6 +166,16 @@ window.onload = function(){
 	//顶部滑条跟随			  
 	//Swiper部分
 	//主页面整体Swiper
+	Slide.alreadyLoadArr=new Array();//存储已加载的页面
+	Slide.verifyPage = function(num){
+		if(Slide.alreadyLoadArr.indexOf(num)==-1){
+			Slide.alreadyLoadArr.push(num);
+			Floor.loadFloor(num,_URL);
+		}
+		else{
+			return;
+		}
+	}
 	var mainSwiper = new Swiper('.main-swiper-container',{
 		autoHeight:true,
 		resistanceRatio : 0,
@@ -171,7 +189,7 @@ window.onload = function(){
 			// setTimeout('function(){Slide.Start();Slide.animateTo(300);}',1800);
 			
 			$('.show-slide').removeClass('show-slide');
-
+			Slide.verifyPage($('.slide-nav.active').attr('data-sysNo'),_URL);
 			imgMark=0;
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
 			imgObj=$(".show-slide img");
@@ -207,31 +225,48 @@ window.onload = function(){
 	});
 	//通用580高度通栏轮播
 	var h580Swiper = new Swiper('.common-h580-banner',{
-		autoplay:3000,
 		pagination : '.common-pagination',
 		loop:true,
-		autoplayDisableOnInteraction:false,
 		observer:true
 	});
 	//通用360高度通栏轮播
 	var h360Swiper = new Swiper('.common-h360-container',{
-		autoplay:3000,
 		pagination : '.common-pagination',
 		loop:true,
-		observer:true,
-		autoplayDisableOnInteraction:false
+		observer:true
 	});
+
 //模块化部分START   
 
 	var Floor = new Object();
 	Floor.SysnoCont = new Array();//保存模块ID指针
 	Floor.TypeCont = new Array();//保存模块类型指针
 	Floor.blockCont = new Array();//保存各楼层对象
-	Floor.loadFloor = function(_url){//装载楼层
+	Floor.reDefineSwiper = function(){
+		h360Swiper = new Swiper('.common-h360-banner',{
+			pagination : '.common-pagination',
+			observer:true
+		});
+		dealSwiper = new Swiper('.goods-swiper-container',{
+			direction:'horizontal',
+			slidesPerView:3.4,
+			observer:true
+		});
+		h580Swiper = new Swiper('.common-h580-banner',{
+			pagination : '.common-pagination',
+			loop:true,
+			observer:true
+		});
+		mainSwiper.update();
+	}
+	Floor.loadFloor = function(sysNo,_url){//装载楼层
 		$.ajax({
 			type:'GET',
 			url:_url,
 			dataType:'json',
+			data:{
+				sys:sysNo
+			},
 			error:function(data){
 				console.log('error'+arguments[1]);
 			},
@@ -248,29 +283,10 @@ window.onload = function(){
 				$.each(Floor.blockCont,function(key,value){
 					content += Floor.loadBlock(Floor.TypeCont[key],value);
 				});
-				console.log(content);
-				$('.index-page').append(content);
-				h360Swiper = new Swiper('.common-h360-banner',{
-					autoplay:3000,
-					pagination : '.common-pagination',
-					loop:true,
-					observer:true,
-					autoplayDisableOnInteraction:false
-				});
-				dealSwiper = new Swiper('.goods-swiper-container',{
-					direction:'horizontal',
-					slidesPerView:3.4,
-					observer:true
-				});
-				h580Swiper = new Swiper('.common-h580-banner',{
-					autoplay:3000,
-					pagination : '.common-pagination',
-					loop:true,
-					autoplayDisableOnInteraction:false,
-					observer:true
-				});
-				mainSwiper.update();
-			}
+				$('.floorCont').eq(sysNo).append(content);
+				lazyL();
+				Floor.reDefineSwiper();
+			}	
 		});		
 	}
 	Floor.loadBlock = function(style,obj){//页面组装	
@@ -451,7 +467,6 @@ window.onload = function(){
 
 			$.each(obj,function(k,v){
 				tailHtml = Floor.addTail(style,lastPosition,k,obj);
-				// console.log(lastPosition+'||'+v.Position);
 				if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
 					counter=0;
 					if(lastPosition==2){
@@ -593,5 +608,5 @@ window.onload = function(){
 		}
 
 	}
-	Floor.loadFloor('./res/getFloor.json');
+	Floor.loadFloor(0,_URL);//刚进入时加载首页
 }
