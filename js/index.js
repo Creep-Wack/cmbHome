@@ -170,6 +170,7 @@ window.onload = function(){
 	Slide.verifyPage = function(num){
 		if(Slide.alreadyLoadArr.indexOf(num)==-1){
 			Slide.alreadyLoadArr.push(num);
+			Floor.clear();
 			Floor.loadFloor(num,_URL);
 		}
 		else{
@@ -242,6 +243,11 @@ window.onload = function(){
 	Floor.SysnoCont = new Array();//保存模块ID指针
 	Floor.TypeCont = new Array();//保存模块类型指针
 	Floor.blockCont = new Array();//保存各楼层对象
+	Floor.clear = function(){//清空容器释放内存
+		Floor.SysnoCont = new Array();
+		Floor.TypeCont = new Array();
+		Floor.blockCont = new Array();
+	}
 	Floor.reDefineSwiper = function(){
 		h360Swiper = new Swiper('.common-h360-banner',{
 			pagination : '.common-pagination',
@@ -265,7 +271,7 @@ window.onload = function(){
 			url:_url,
 			dataType:'json',
 			data:{
-				sys:sysNo
+				sysno:sysNo
 			},
 			error:function(data){
 				console.log('error'+arguments[1]);
@@ -349,7 +355,7 @@ window.onload = function(){
 				}
 				if(v.Position==1){//楼层标题
 					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 				}
 				else if(v.Position==2){//540X360高度
 					lastPosition=v.Position;
