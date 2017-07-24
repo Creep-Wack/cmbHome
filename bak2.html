@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<meta content="telephone=no" name="format-detection" /><!--忽略将数字识别为电话号码-->
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="./css/style.css" >
+		<link rel="stylesheet" type="text/css" href="./css/swiper-3.4.2.min.css" >
+	</head>
+	<body>
+	<!-- 弹屏 START-->
+	<div id="float_wrap">
+		<!-- 弹屏主体 -->
+		<div id="float_main">
+			<a href="#">
+				<img src="images/test.jpg">
+			</a>
+		</div>
+		<!-- 关闭弹屏窗口 -->
+		<a href="#" id="close_floatWrap">&times;</a>
+	</div>
+
+	<header>
+		<div id="navCont" class="clearfix">
+			<em id="slide-line"></em>
+			<div class="fl slide-nav active" id="indexPage">首页<em></em></div>
+			<div class="swiper-container nav-swiper-container fl">
+				<div class="swiper-wrapper" id="top-nav">
+ 
+				
+
+				</div>
+			</div>
+		</div>
+	</header>
+	
+		
+	<div class="swiper-container main-swiper-container" id="mainSS">
+		<div class="swiper-wrapper" id="main-swiper-wrap">
+			<!-- 首屏主页 -->
+			<div class="main-slide swiper-slide index-page show-slide"> 
+				<!-- 首页通栏轮播 -->
+				<div class="swiper-container banner-swiper-container container">
+					<div class="swiper-wrapper" id="banner-slider-wrap">
+						
+					</div>
+					<!-- 分页器容器 -->
+					<div class="banner-pagination"></div>
+					<!-- 搜索栏 -->
+					<div class="search">
+						<div class="search-box">
+							<input class="text" type="text" id="keyword" readonly="readonly" value="LAB SERIES朗仕">
+							<a class="search-btn" onclick="goUrl('cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fProduct%2fSearch%3fkeyword%3dmykeyword%26bannersysno%3d0%26hmsr%3dcl5%26hmmd%3dsearch%26hmpl%3d%26hmkw%3d%26hmci%3d%26pushwebview%3d1&title=&version=v2')" href="#" id="search">
+								<span class="icons search-icon"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- 首页通栏轮播 END-->
+				
+				
+				<section class="container">
+					<!-- 横栏五列主要入口按钮 START -->
+					<ul class="nav-tab clearfix" id="nav-tab">
+						
+		
+					</ul>
+					<!-- 横栏五列主要入口按钮 END -->
+					<!-- 商城头条 PART START -->
+					<div class="swiper-container marquee-swiper-container" id="marquee">
+						<span class="topline-icon"></span>
+						<ul class="swiper-wrapper" id="marquee-wrap">
+
+						</ul>
+					</div>
+					<!-- 商城头条 PART END -->
+				</section>
+
+				<section class="container" id="dailyDeal">
+					<!-- 每日特惠 BLOCK START -->
+						<!-- 每日特惠头图 -->
+						<a href="">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_05.jpg">
+						</a>
+
+						<!-- 每日特惠商品推荐 -->
+						<div class="swiper-container dailyDeal-swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide deal-slide">
+									<a href="">
+										<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/goods.jpg" alt="">
+										<p class="deal-name">商品名称</p>
+										<p class="deal-price"><span>￥</span>233.3</p>
+									</a>
+								</div>
+								<div class="swiper-slide deal-slide">
+									<a href="">
+										<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/goods.jpg" alt="">
+										<p class="deal-name">商品名称</p>
+										<p class="deal-price"><span>￥</span>233.3</p>
+									</a>
+								</div>
+								<div class="swiper-slide deal-slide">
+									<a href="">
+										<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/goods.jpg" alt="">
+										<p class="deal-name">商品名称</p>
+										<p class="deal-price"><span>￥</span>233.3</p>
+									</a>
+								</div>
+								<div class="swiper-slide deal-slide">
+									<a href="">
+										<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/goods.jpg" alt="">
+										<p class="deal-name">商品名称</p>
+										<p class="deal-price"><span>￥</span>233.3</p>
+									</a>
+								</div>
+								<div class="swiper-slide deal-slide">
+									<a href="">
+										<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/goods.jpg" alt="">
+										<p class="deal-name">商品名称</p>
+										<p class="deal-price"><span>￥</span>233.3</p>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- 聚便宜、每日特惠入口    -->
+						<div class="h360 columns col2 clearfix">
+							<a href="#">
+								<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_07.jpg" alt="">
+							</a>
+							<a href="#">
+								<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_08.jpg" alt="">
+							</a>
+						</div>
+					<!-- 每日特惠 BLOCK End-->
+
+				</section>
+
+				<section class="container" id="special-com">
+					<!-- 特色推荐 BLOCK START -->
+					<div class="block-title h120">
+						<img src="images/common_title.jpg" alt="楼层标题">
+					</div>
+					<div class="h580 banner-wrap">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_10.jpg" alt="">
+						</a>
+					</div>
+					<div class="h360 columns col4 clearfix">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/special_01.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/special_02.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/special_03.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/special_04.jpg" alt="">
+						</a>
+					</div>
+					<!-- 特色推荐 BLOCK END -->
+				</section>
+
+				<section class="container" id="goShopping">
+					<!-- 逛商场 BLOCK START -->
+					<div class="block-title h120">
+						<img src="images/common_title.jpg" alt="楼层标题">
+					</div>
+					<div class="h360 banner-wrap">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_12.jpg" alt="">
+						</a>
+					</div>
+					<div class="h280 columns col2 clearfix">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_15.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_16.jpg" alt="">
+						</a>
+					</div>
+					<div class="h280 columns col2 clearfix">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_18.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_19.jpg" alt="">
+						</a>
+					</div>
+					<div class="h360 columns col4 clearfix">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_20.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_21.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_22.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_23.jpg" alt="">
+						</a>
+					</div>
+					<div class="h350 columns col4 clearfix">
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_24.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_25.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_26.jpg" alt="">
+						</a>
+						<a href="#">
+							<img src="https://img01.mall.cmbchina.com/banner/default.jpg" data-original="images/bg_27.jpg" alt="">
+						</a>
+					</div>
+					<!-- 逛商场 BLOCK END -->
+				</section>
+				<div class="floorCont"></div>
+			</div>
+
+			
+		</div>
+		</div>
+
+
+		<footer id="footer">
+			<ul class="clearfix" id="footer-wrap">
+				
+			</ul>
+		</footer>
+	</body>
+	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="./js/swiper.jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="./js/jquery.lazyload.js"></script> -->
+	<script type="text/javascript" src="./js/index.js"></script>
+	<!-- <script type="text/javascript" src="./js/cmbFloorLoad.js"></script> -->
+</html>

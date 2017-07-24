@@ -1,6 +1,17 @@
-var _oW = window.screen.width;
-var _URL = './res/getFloor.json';
+/* 
+2017-7-24 17:19:21 更新内容
+1、新增每日特惠板块LOAD
+2、更换页面时清空Floor对象存储内容 释放内存
+3、更换了部分CSS样式
+4、整理了原HTML结构
 
+
+*/
+var _oW = window.screen.width;
+var _floorUrl = './res/getFloor.json';
+var _dailyDealUrl = './res/getdailyDeal.json';
+var _adUrl = './res/getAd.json';
+var _tabUrl = './res/getTab.json';
 window.onload = function(){
 	// for rem  根文字大小调整
 	(function (doc, win) {
@@ -44,7 +55,7 @@ window.onload = function(){
 			dataType:'json',
 			async:false,
 			error:function(data){
-				console.log('error'+arguments[1]);
+				console.log(arguments[1]);
 			},
 			success:function(data){
 				// console.log(data);
@@ -61,7 +72,7 @@ window.onload = function(){
 		});	
 	}
 
-	Slide.loadSlide('./res/getTab.json');
+	Slide.loadSlide(_tabUrl);
 
 // 顶部滑条部分  END
 
@@ -111,18 +122,63 @@ window.onload = function(){
 					autoplayDisableOnInteraction:false,
 					observer:true
 				});
+				//首页跑马灯Swiper
+				var marqueeSwiper = new Swiper('.marquee-swiper-container',{
+					direction:'vertical',
+					autoplay:3000,
+					loop:true,
+					autoplayDisableOnInteraction:false
+				});
 				
 				lazyL();
 			}
 		});
 	}
-	CmbIndex.loadAdvertisement('./res/getAd.json');
-	// Cmb.build = function(type,obj){
-	// 	switch(type){
-	// 		case -1:
+	CmbIndex.loadDailyDeal = function(_url){//LOAD每日特惠部分
+		$.ajax({
+			type:'GET',
+			url:_url,
+			dataType:'json',
+			error:function(data){
+				console.log(arguments[1]);
+			},
+			success:function(data){
+				var content="";
+				var tailHtml;
+				var counter=0;;
+				$.each(data,function(ind,obj){
+					if(obj.ModelSysno==1){//每日特惠板块头图
+						content = "<div class=\"container h360\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+					}
+					else {
+						if(counter==0){//第一张广告
+							content += "<div class=\"swiper-container dailyDeal-swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide deal-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"><p class=\"deal-name\">"+obj.goodsName+"</p><p class=\"deal-price\">"+obj.goodsPrice+"</p></a></div>";
+						}
+						else if(counter>0){//限制广告
+							content += "<div class=\"swiper-slide deal-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"><p class=\"deal-name\">"+obj.goodsName+"</p><p class=\"deal-price\">"+obj.goodsPrice+"</p></a></div>";
+						}
+						counter++;
+					}
+				});
+				if(counter==0){//没有出现商品部分
+					tailHtml="";
+				}
+				else{
+					tailHtml="</div></div>";
+				}
+				content+=tailHtml;
+				$('#dailyDeal').append(content);
+				//每日特惠推荐商品Swiper
+				var dealSwiper = new Swiper('.dailyDeal-swiper-container',{
+					direction:'horizontal',
+					slidesPerView:3.8
+				});
+			}
 
-	// 	}
-	// }
+		});
+	}
+	CmbIndex.loadDailyDeal(_dailyDealUrl);
+	CmbIndex.loadAdvertisement(_adUrl);
 	//img懒加载START
 
 	 var imgObj=$(".show-slide img");
@@ -171,7 +227,7 @@ window.onload = function(){
 		if(Slide.alreadyLoadArr.indexOf(num)==-1){
 			Slide.alreadyLoadArr.push(num);
 			Floor.clear();
-			Floor.loadFloor(num,_URL);
+			Floor.loadFloor(num,_floorUrl);
 		}
 		else{
 			return;
@@ -190,7 +246,10 @@ window.onload = function(){
 			// setTimeout('function(){Slide.Start();Slide.animateTo(300);}',1800);
 			
 			$('.show-slide').removeClass('show-slide');
-			Slide.verifyPage($('.slide-nav.active').attr('data-sysNo'),_URL);
+			if(_Id!=0){//二级页
+				Slide.verifyPage($('.slide-nav.active').attr('data-sysNo'),_floorUrl);
+			}
+			
 			imgMark=0;
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
 			imgObj=$(".show-slide img");
@@ -204,19 +263,6 @@ window.onload = function(){
 
 
 	
-	//首页跑马灯Swiper
-	var marqueeSwiper = new Swiper('.marquee-swiper-container',{
-		direction:'vertical',
-		autoplay:false,
-		loop:true,
-		autoplayDisableOnInteraction:false
-	});
-
-	//每日特惠推荐商品Swiper
-	var dealSwiper = new Swiper('.dailyDeal-swiper-container',{
-		direction:'horizontal',
-		slidesPerView:3.8
-	});
 
 	//楼层商品列表Swiper
 	var dealSwiper = new Swiper('.goods-swiper-container',{
@@ -243,23 +289,26 @@ window.onload = function(){
 	Floor.SysnoCont = new Array();//保存模块ID指针
 	Floor.TypeCont = new Array();//保存模块类型指针
 	Floor.blockCont = new Array();//保存各楼层对象
-	Floor.clear = function(){//清空容器释放内存
+	Floor.clear = function(){//!!!!!!清空容器释放内存!!!!!!!!!!!!!!!!!!!!!!
 		Floor.SysnoCont = new Array();
 		Floor.TypeCont = new Array();
 		Floor.blockCont = new Array();
 	}
 	Floor.reDefineSwiper = function(){
 		h360Swiper = new Swiper('.common-h360-banner',{
-			pagination : '.common-pagination',
-			observer:true
+			// pagination : '.common-pagination',
+			loop:true,
+			observer:true,
+			autoplay:3000
 		});
 		dealSwiper = new Swiper('.goods-swiper-container',{
-			direction:'horizontal',
 			slidesPerView:3.4,
 			observer:true
 		});
 		h580Swiper = new Swiper('.common-h580-banner',{
 			pagination : '.common-pagination',
+			autoplay:3000,
+			autoplayDisableOnInteraction:false,
 			loop:true,
 			observer:true
 		});
@@ -614,5 +663,5 @@ window.onload = function(){
 		}
 
 	}
-	Floor.loadFloor(0,_URL);//刚进入时加载首页
+	Floor.loadFloor(0,_floorUrl);//刚进入时加载首页
 }

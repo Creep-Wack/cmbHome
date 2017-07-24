@@ -1,0 +1,72 @@
+[
+    {
+        "AdvertisementName": "广告",
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":1,
+        "ResourceUrl": "images/bg_05.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "marqueeText":"",
+        "ModelSysno": 2,
+        "ModelType":2,
+        "goodsPrice":323,
+        "goodsName":"商品名称ABCDEFG",
+        "ResourceUrl": "images/test.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "marqueeText":"",
+        "ModelSysno": 2,
+        "ModelType":2,
+        "goodsPrice":323,
+        "goodsName":"商品名称HIJKLMN",
+        "ResourceUrl": "images/test.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "marqueeText":"",
+        "ModelSysno": 2,
+        "ModelType":2,
+        "goodsPrice":323,
+        "goodsName":"商品名称HIJKLMN",
+        "ResourceUrl": "images/test.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "marqueeText":"",
+        "ModelSysno": 2,
+        "ModelType":2,
+        "goodsPrice":323,
+        "goodsName":"商品名称HIJKLMN",
+        "ResourceUrl": "images/test.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告2",
+        "marqueeText":"",
+        "ModelSysno": 2,
+        "ModelType":2,
+        "goodsPrice":323,
+        "goodsName":"商品名称HIJKLMN",
+        "ResourceUrl": "images/test.jpg",
+        "Link": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    }
+]
