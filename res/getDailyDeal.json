@@ -2,7 +2,8 @@
     {
         "AdvertisementName": "广告",
         "marqueeText":"",
-        "ModelSysno": 1,
+        "ModelSysno": -4,
+        "Position":1,
         "ModelType":1,
         "ResourceUrl": "images/bg_05.jpg",
         "Link": "#####",
@@ -12,7 +13,8 @@
     {
         "AdvertisementName": "广告2",
         "marqueeText":"",
-        "ModelSysno": 2,
+        "ModelSysno": -4,
+        "Position":2,
         "ModelType":2,
         "goodsPrice":323,
         "goodsName":"商品名称ABCDEFG",
@@ -24,7 +26,8 @@
     {
         "AdvertisementName": "广告2",
         "marqueeText":"",
-        "ModelSysno": 2,
+        "ModelSysno": -4,
+        "Position":2,
         "ModelType":2,
         "goodsPrice":323,
         "goodsName":"商品名称HIJKLMN",
@@ -36,7 +39,8 @@
     {
         "AdvertisementName": "广告2",
         "marqueeText":"",
-        "ModelSysno": 2,
+        "ModelSysno": -4,
+        "Position":2,
         "ModelType":2,
         "goodsPrice":323,
         "goodsName":"商品名称HIJKLMN",
@@ -48,7 +52,8 @@
     {
         "AdvertisementName": "广告2",
         "marqueeText":"",
-        "ModelSysno": 2,
+        "ModelSysno": -4,
+        "Position":2,
         "ModelType":2,
         "goodsPrice":323,
         "goodsName":"商品名称HIJKLMN",
@@ -60,7 +65,8 @@
     {
         "AdvertisementName": "广告2",
         "marqueeText":"",
-        "ModelSysno": 2,
+        "ModelSysno": -4,
+        "Position":2,
         "ModelType":2,
         "goodsPrice":323,
         "goodsName":"商品名称HIJKLMN",
