@@ -44,10 +44,10 @@ window.onload = function(){
 		mainSwiper.slideTo(ind);
 	});
 	var navSwiper = new Swiper('.nav-swiper-container',{
-					setWrapperSize :true,
-					slidesPerView : 'auto',
-					observer:true
-				});
+		setWrapperSize :true,
+		slidesPerView : 'auto',
+		observer:true
+	});
 	Slide.loadSlide = function(_url){//装载顶部导航
 		$.ajax({
 			type:'GET',
@@ -63,11 +63,10 @@ window.onload = function(){
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
 					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"><div class=\"floorCont\"></div></div>");
-						
+					
 				});
 				$('#top-nav').append(content);
 				navSwiper.update();
-
 			}
 		});	
 	}
@@ -148,7 +147,7 @@ window.onload = function(){
 			success:function(data){
 				var content;
 				$.each(data,function(ind,obj){//一级遍历原始JSON对象
-						content  = "<div class=\"swiper-slide deal-slide\"><a href=\"https://ssl.mall.cmbchina.com/_cl5_/Recommend/DayPreferenceNew#"+obj.ProductCode+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
+						content  = "<div class=\"swiper-slide deal-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
 						$('#dailyDealAd').append(content);
 
 				});
@@ -241,7 +240,6 @@ window.onload = function(){
 			imgObj=$(".show-slide img");
 			lazyL();
 			Slide.ifClick=false;
-
 		}
 
 	});
@@ -298,7 +296,7 @@ window.onload = function(){
 			loop:true,
 			observer:true
 		});
-		mainSwiper.update();
+
 	}
 	Floor.loadFloor = function(sysNo,_url){//装载楼层
 		$.ajax({
@@ -319,14 +317,16 @@ window.onload = function(){
 						Floor.TypeCont.push(obj.ModelType);
 						Floor.blockCont.push(new Array());
 					}
-					Floor.blockCont[Floor.blockCont.length-1].push(obj);	
+					Floor.blockCont[Floor.blockCont.length-1].push(obj);
 				});
 				$.each(Floor.blockCont,function(key,value){
 					content += Floor.loadBlock(Floor.TypeCont[key],value);
 				});
-				$('.floorCont').eq(sysNo).append(content);
+				$('.floorCont').eq(sysNo).append(content);	
 				lazyL();
 				Floor.reDefineSwiper();
+				// mainSwiper.update();
+				mainSwiper.onResize();
 			}	
 		});		
 	}

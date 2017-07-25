@@ -433,4 +433,11 @@ header{
 	display: block;
 	margin:0 auto;
 }
-
+/*
+.main-slide{
+	height:1080px!important;
+}
+.main-slide.show-slide{
+	height:auto!important;
+}
+*/
