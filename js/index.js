@@ -8,9 +8,10 @@
 
 */
 var _oW = window.screen.width;
-var _floorUrl = './res/getFloor.json';
-var _adUrl = './res/getAd.json';
-var _tabUrl = './res/getTab.json';
+var _floorUrl = './res/getFloor.json';//模块楼层
+var _adUrl = './res/getAd.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+var _tabUrl = './res/getTab.json';//顶部导航
+var _dailyDealUrl = './res/getDailyDeal.json';//每日特惠商品列表
 window.onload = function(){
 	// for rem  根文字大小调整
 	(function (doc, win) {
@@ -103,16 +104,9 @@ window.onload = function(){
 						$('#marquee').show();
 					}
 					else if(obj.ModelSysno==-4){//每日特惠！！！！！
-						if(obj.Position==1){//每日特惠板块头图
-							content = "<div class=\"container h360\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
-							$('#dailyDeal-banner').append(content);
-						}
-						else {
-							content  = "<div class=\"swiper-slide deal-slide\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"><p class=\"deal-name\">"+obj.goodsName+"</p><p class=\"deal-price\">"+obj.goodsPrice+"</p></a></div>";
-							$('#dailyDealAd').append(content);
-						}
 						
-						$('#dailyDealAd').append(content);
+						content = "<div class=\"container h360\"><a href=\""+obj.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+						$('#dailyDeal-banner').append(content);
 					}
 				
 					else if(obj.ModelSysno==-5){//底部TAB
@@ -138,16 +132,38 @@ window.onload = function(){
 					loop:true,
 					autoplayDisableOnInteraction:false
 				});
+				
+				lazyL();
+			}
+		});
+	}
+	CmbIndex.loadDailyDeal = function(_url){
+		$.ajax({
+			type:'GET',
+			url:_url,
+			dataType:'json',
+			error:function(data){
+				console.log(arguments[1]);
+			},
+			success:function(data){
+				var content;
+				$.each(data,function(ind,obj){//一级遍历原始JSON对象
+						content  = "<div class=\"swiper-slide deal-slide\"><a href=\"https://ssl.mall.cmbchina.com/_cl5_/Recommend/DayPreferenceNew#"+obj.ProductCode+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
+						$('#dailyDealAd').append(content);
+
+				});
 				//每日特惠推荐商品Swiper
 				var dealSwiper = new Swiper('.dailyDeal-swiper-container',{
 					direction:'horizontal',
 					slidesPerView:3.8
 				});
+				
 				lazyL();
 			}
 		});
+		
 	}
-	
+	CmbIndex.loadDailyDeal(_dailyDealUrl);
 	CmbIndex.loadAdvertisement(_adUrl);
 	//img懒加载START
 
