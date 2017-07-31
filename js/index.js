@@ -5,7 +5,10 @@
 3、更换了部分CSS样式
 4、整理了原HTML结构
 
-
+2017-7-31 17:51:21 更新内容
+1、同步增加goUrl方法
+2、更换部分css样式
+3、1X8A  模板部分class更换
 */
 var _oW = window.screen.width;
 var _floorUrl = './res/getFloor.json';//模块楼层
@@ -62,11 +65,11 @@ window.onload = function(){
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
-					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"><div class=\"floorCont\"></div></div>");
+					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\" data-hash=\"slide\"><div class=\"floorCont\"></div></div>");
 					
 				});
 				$('#top-nav').append(content);
-				navSwiper.update();
+				navSwiper.update();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 			}
 		});	
 	}
@@ -241,6 +244,9 @@ window.onload = function(){
 		autoHeight:true,
 		resistanceRatio : 0,
 		observer:true,
+		touchAngle : 25,
+		observeParents:true,
+		hashnav:true,
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
@@ -433,7 +439,7 @@ window.onload = function(){
 				counter++;
 			});
 		}
-		else if(style==4){//1X8A模块  1-120楼层标题  8-240X540  一列2行广告位
+		else if(style==4){//1X8A模块  1-120楼层标题  8-270X320  一行4列广告位
 			$.each(obj,function(k,v){
 				tailHtml = Floor.addTail(style,lastPosition,k,obj);
 				if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
@@ -446,10 +452,10 @@ window.onload = function(){
 					lastPosition=v.Position;
 					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 				}
-				else if(v.Position==2){//270高度一行四列广告位
+				else if(v.Position==2){//320高度一行四列广告位
 					lastPosition=v.Position;
-					if(counter==0){//第一张广告
-						_html += "<div class=\"h270 columns col4 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
+					if(counter==0){//第一张广告  2017-7-31 修改class h250-->h320
+						_html += "<div class=\"h320 columns col4 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter<8){//限制广告数量8张以内
 						_html += "<a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -461,7 +467,7 @@ window.onload = function(){
 				counter++;
 			});
 		}
-		else if(style==5){//1X8B模块  1-120楼层标题  8-240X540  一行2列广告位
+		else if(style==5){//1X8B模块  1-120楼层标题  8-540X250  一行2列广告位
 			$.each(obj,function(k,v){
 				tailHtml = Floor.addTail(style,lastPosition,k,obj);
 				if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
@@ -474,7 +480,7 @@ window.onload = function(){
 					lastPosition=v.Position;
 					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 				}
-				else if(v.Position==2){//360高度轮播
+				else if(v.Position==2){//250高度广告
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
 						_html += "<div class=\"h250 columns col2 clearfix\"><a href=\""+v.Link+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -686,4 +692,9 @@ window.onload = function(){
 
 	}
 	Floor.loadFloor(0,_floorUrl);//刚进入时加载首页
+}
+
+//添加goUrl方法
+function goUrl(url){
+	window.location.href = url;
 }
