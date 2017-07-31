@@ -7,7 +7,7 @@
         "ModelType":1,
         "Position": 1,
         "ResourceUrl": "http://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/TANPING/0713/ktqlj.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -20,7 +20,7 @@
         "ModelType":1,
         "Position": 1,
         "ResourceUrl": "http://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/TANPING/0713/ktqlj.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -33,7 +33,7 @@
         "ModelType":1,
         "Position": 1,
         "ResourceUrl": "http://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/TANPING/0713/ktqlj.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -46,7 +46,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_01.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -59,7 +59,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_02.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -72,7 +72,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_03.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -85,7 +85,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_04.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -98,7 +98,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_05.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -111,7 +111,7 @@
         "ModelType":3,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_03.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -124,7 +124,7 @@
         "ModelType":3,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_04.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -137,7 +137,7 @@
         "ModelType":3,
         "Position": 1,
         "ResourceUrl": "images/icons/home-icon_05.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -150,7 +150,7 @@
         "ModelType":5,
         "Position": 1,
         "ResourceUrl": "images/icons/footer_01.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -163,7 +163,7 @@
         "ModelType":5,
         "Position": 1,
         "ResourceUrl": "images/icons/footer_02.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -176,7 +176,7 @@
         "ModelType":5,
         "Position": 1,
         "ResourceUrl": "images/icons/footer_03.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -189,7 +189,7 @@
         "ModelType":5,
         "Position": 1,
         "ResourceUrl": "images/icons/footer_04.png",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -201,7 +201,18 @@
         "Position":1,
         "ModelType":1,
         "ResourceUrl": "images/bg_05.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
+        "AdvertisementName": "广告",
+        "marqueeText":"",
+        "ModelSysno": -4,
+        "Position":1,
+        "ModelType":1,
+        "ResourceUrl": "images/bg_05.jpg",
+        "AppUrl": "#####",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
     }

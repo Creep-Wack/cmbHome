@@ -7,7 +7,7 @@
         "ModelType":7,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -20,7 +20,7 @@
         "ModelType":7,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -33,7 +33,7 @@
         "ModelType":7,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -46,7 +46,7 @@
         "ModelType":7,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -59,7 +59,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_15.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -72,7 +72,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_16.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -85,7 +85,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_19.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -98,7 +98,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_18.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -111,7 +111,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_19.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -124,7 +124,7 @@
         "ModelType":7,
         "Position": 3,
         "ResourceUrl": "images/bg_20.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -137,7 +137,7 @@
         "ModelType":7,
         "Position": 4,
         "ResourceUrl": "images/special_01.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -150,7 +150,7 @@
         "ModelType":7,
         "Position": 4,
         "ResourceUrl": "images/special_02.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -163,7 +163,7 @@
         "ModelType":7,
         "Position": 4,
         "ResourceUrl": "images/special_03.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -176,7 +176,7 @@
         "ModelType":7,
         "Position": 4,
         "ResourceUrl": "images/special_04.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -189,7 +189,7 @@
         "ModelType":3,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -202,7 +202,7 @@
         "ModelType":3,
         "Position": 2,
         "ResourceUrl": "images/bg_08.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -215,7 +215,7 @@
         "ModelType":3,
         "Position": 2,
         "ResourceUrl": "images/bg_07.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -228,7 +228,7 @@
         "ModelType":3,
         "Position": 2,
         "ResourceUrl": "images/bg_07.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -241,7 +241,7 @@
         "ModelType":3,
         "Position": 2,
         "ResourceUrl": "images/bg_08.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -254,7 +254,7 @@
         "ModelType":6,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -267,7 +267,7 @@
         "ModelType":6,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -280,7 +280,7 @@
         "ModelType":6,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -293,7 +293,7 @@
         "ModelType":6,
         "Position": 2,
         "ResourceUrl": "images/bg_10.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -306,7 +306,7 @@
         "ModelType":6,
         "Position": 3,
         "ResourceUrl": "images/special_01.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -319,7 +319,7 @@
         "ModelType":6,
         "Position": 3,
         "ResourceUrl": "images/special_02.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -332,7 +332,7 @@
         "ModelType":6,
         "Position": 3,
         "ResourceUrl": "images/special_03.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -345,7 +345,7 @@
         "ModelType":6,
         "Position": 3,
         "ResourceUrl": "images/special_02.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -358,7 +358,7 @@
         "ModelType":6,
         "Position": 3,
         "ResourceUrl": "images/special_03.jpg",
-        "Link": "#############",
+        "AppUrl": "#############",
         "Priority": "2",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -371,7 +371,7 @@
         "ModelType":5,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -384,7 +384,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -397,7 +397,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -410,7 +410,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -423,7 +423,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -436,7 +436,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -449,7 +449,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -462,7 +462,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -475,7 +475,7 @@
         "ModelType":5,
         "Position": 2,
         "ResourceUrl": "images/second/second_11.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -488,7 +488,7 @@
         "ModelType":4,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -501,7 +501,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_20.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -514,7 +514,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_21.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -527,7 +527,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_22.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -540,7 +540,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_23.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -553,7 +553,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_24.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -566,7 +566,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_25.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -579,7 +579,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_26.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -592,7 +592,7 @@
         "ModelType":4,
         "Position": 2,
         "ResourceUrl": "images/bg_27.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -605,7 +605,7 @@
         "ModelType":2,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -618,7 +618,7 @@
         "ModelType":2,
         "Position": 2,
         "ResourceUrl": "images/second/second_07.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -631,7 +631,7 @@
         "ModelType":2,
         "Position": 3,
         "ResourceUrl": "images/second/second_08.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -644,7 +644,7 @@
         "ModelType":2,
         "Position": 4,
         "ResourceUrl": "images/second/second_09.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -657,7 +657,7 @@
         "ModelType":1,
         "Position": 1,
         "ResourceUrl": "images/common_title.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -670,7 +670,7 @@
         "ModelType":1,
         "Position": 2,
         "ResourceUrl": "images/special_04.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -683,7 +683,7 @@
         "ModelType":1,
         "Position": 2,
         "ResourceUrl": "images/special_03.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -696,7 +696,7 @@
         "ModelType":1,
         "Position": 2,
         "ResourceUrl": "images/special_02.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
@@ -709,7 +709,7 @@
         "ModelType":1,
         "Position": 2,
         "ResourceUrl": "images/special_01.jpg",
-        "Link": "#####",
+        "AppUrl": "#####",
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
