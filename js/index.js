@@ -9,17 +9,23 @@
 1、同步增加goUrl方法
 2、更换部分css样式
 3、1X8A  模板部分class更换
+
+2017-8-1 12:31:31 更新内容
+1、更换了二级页floorCont加载顺序
+
 */
 var _oW = window.screen.width;
-var _floorUrl = './res/getFloor.json';//模块楼层
-var _adUrl = './res/getAd.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-var _tabUrl = './res/getTab.json';//顶部导航
-var _dailyDealUrl = './res/getDailyDeal.json';//每日特惠商品列表
 
-// var _floorUrl = '/Home/GetAdvertisement';//模块楼层
-// var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-// var _tabUrl = '/Home/GetSecondaryPage';//顶部导航
-// var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
+var _floorUrl = '/Home/GetAdvertisement';//模块楼层
+var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+var _tabUrl = '/Home/GetSecondaryPage';//顶部导航
+var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
+var _tokenUrl = '/Home/GetToken';//token地址
+
+// var _floorUrl = 'Home/GetAdvertisement.json';//模块楼层
+// var _adUrl = 'Home/GetHomeAdvertisement.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+// var _tabUrl = 'Home/GetSecondaryPage.json';//顶部导航
+// var _dailyDealUrl = 'Home/GetDaypreference.json';//每日特惠商品列表
 
 window.onload = function(){
 	// for rem  根文字大小调整
@@ -46,6 +52,7 @@ window.onload = function(){
 	Slide.addAct = function(num){//更改激活nav
 		$('.slide-nav').removeClass('active').eq(num).addClass('active');
 	}
+	Slide.navCont = new Array();//新增导航容器
 	$('#navCont').delegate('.slide-nav','click',function(){
 		Slide.ifClick=true;
 		var ind = $('.slide-nav').index($(this));
@@ -72,7 +79,7 @@ window.onload = function(){
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
 					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\" data-hash=\"slide\"><div class=\"floorCont\"></div></div>");
-					
+					Slide.navCont.push(obj.Sysno);//导航容器组装
 				});
 				$('#top-nav').append(content);
 				navSwiper.update();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
@@ -249,6 +256,7 @@ window.onload = function(){
 		else{
 			return;
 		}
+		// console.log(Slide.alreadyLoadArr);
 	}
 	var mainSwiper = new Swiper('.main-swiper-container',{
 		autoHeight:true,
@@ -256,7 +264,6 @@ window.onload = function(){
 		observer:true,
 		touchAngle : 25,
 		observeParents:true,
-		hashnav:true,
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
@@ -267,7 +274,7 @@ window.onload = function(){
 			
 			$('.show-slide').removeClass('show-slide');
 			if(_Id!=0){//二级页
-				Slide.verifyPage($('.slide-nav.active').attr('data-sysNo'),_floorUrl);
+				Slide.verifyPage($('.slide-nav.active').attr('data-sysno'),_floorUrl);
 			}
 			
 			imgMark=0;
@@ -333,6 +340,7 @@ window.onload = function(){
 		});
 
 	}
+	// console.log(Slide.navCont);
 	Floor.loadFloor = function(sysNo,_url){//装载楼层
 		$.ajax({
 			type:'GET',
@@ -357,7 +365,9 @@ window.onload = function(){
 				$.each(Floor.blockCont,function(key,value){
 					content += Floor.loadBlock(Floor.TypeCont[key],value);
 				});
-				$('.floorCont').eq(sysNo).append(content);	
+				// console.log(Slide.navCont.indexOf(+sysNo));
+				//2017-8-1 14:05:39  更改楼层装载方式
+				$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
 				lazyL();
 				Floor.reDefineSwiper();
 				// mainSwiper.update();
@@ -704,7 +714,42 @@ window.onload = function(){
 	Floor.loadFloor(0,_floorUrl);//刚进入时加载首页
 }
 
-//添加goUrl方法
+//更新goUrl方法
 function goUrl(url){
 	window.location.href = url;
 }
+
+function jumpsearch(sourceObj) {
+    var keyword = $('#keyword').val();
+    if (keyword == "") {
+        keyword = $('#keyword').attr("placeholder");
+    }
+    var url = "";
+    if ($.trim(keyword) != "") {
+        url = $(sourceObj).attr("data-src");
+        url = url.replace("mykeyword", encodeURIComponent((encodeURIComponent(keyword))));
+        //location.href = "/" + Cmb.WebUI.Common.GetChannelType() + "/Product/ProductSearchList?keyword=" + keyword;
+    } else {
+        //没有传递参数,跳转到查询页
+        url = $(sourceObj).attr("data-emptysrc");
+    }
+    goUrl(url + "&bannersysno=0&hmsr=cl5&hmmd=search&hmpl=&hmkw=&hmci=");
+    //location.href = url;
+}
+
+//更新token
+// function updateToken(_url){
+// 	  var nowTimestamp = +new Date();
+//   var oldSessionTimestamp = localStorage.sessionTimestamp;
+// 	$.ajax({
+// 		ty                                                                                                                                                                                                                                                                                                                                                              pe:'GET',
+// 		url:_url,
+// 		dataType:'json',
+// 		error:function(data){
+// 			console.log(arguments[1]);
+// 		},
+// 		success:function(data){
+			
+// 		}
+// 	});
+// }
