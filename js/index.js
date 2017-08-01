@@ -15,6 +15,12 @@ var _floorUrl = './res/getFloor.json';//模块楼层
 var _adUrl = './res/getAd.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
 var _tabUrl = './res/getTab.json';//顶部导航
 var _dailyDealUrl = './res/getDailyDeal.json';//每日特惠商品列表
+
+// var _floorUrl = '/Home/GetAdvertisement';//模块楼层
+// var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+// var _tabUrl = '/Home/GetSecondaryPage';//顶部导航
+// var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
+
 window.onload = function(){
 	// for rem  根文字大小调整
 	(function (doc, win) {
@@ -104,7 +110,7 @@ window.onload = function(){
 						$('#nav-tab').append(content);
 					}
 					else if(obj.ModelSysno==-3){//跑马灯
-						content= "<li class=\"swiper-slide\"><a href=\""+obj.AppUrl+"\">"+obj.marqueeText+"</a></li>";
+						content = "<li class=\"swiper-slide\"><a href=\"" + obj.TopLineAppUrl + "\">" + obj.AdvertisementName + "</a></li>";
 						$('#marquee-wrap').append(content);
 						$('#marquee').show();
 					}
