@@ -13,6 +13,13 @@
 2017-8-1 12:31:31 更新内容
 1、更换了二级页floorCont加载顺序
 
+
+2017-8-2 16:15:54  更新内容
+1、固定首页部分板块高度，防止高度塌陷
+2、增加模块装载时计数验证  防止板块溢出
+3、修改了每日特惠商品样式
+4、删去部分冗余代码 
+5、修改跑马灯样式                                              
 */
 var _oW = window.screen.width;
 
@@ -166,7 +173,7 @@ window.onload = function(){
 				//首页跑马灯Swiper
 				var marqueeSwiper = new Swiper('.marquee-swiper-container',{
 					direction:'vertical',
-					autoplay:3000,
+					// autoplay:3000,
 					loop:true,
 					autoplayDisableOnInteraction:false
 				});
@@ -193,7 +200,8 @@ window.onload = function(){
 				//每日特惠推荐商品Swiper
 				var dealSwiper = new Swiper('.dailyDeal-swiper-container',{
 					direction:'horizontal',
-					slidesPerView:3.8
+					slidesPerView:3.8,
+					resistanceRatio : 0
 				});
 				
 				lazyL();
@@ -370,8 +378,8 @@ window.onload = function(){
 				$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
 				lazyL();
 				Floor.reDefineSwiper();
-				// mainSwiper.update();
 				mainSwiper.onResize();
+				
 			}	
 		});		
 	}
@@ -419,16 +427,24 @@ window.onload = function(){
 					counter=0;
 				}
 				if(v.Position==1){//楼层标题
-					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					}
+					else{}
+					
 				}
 				else if(v.Position==2){//540X560高度
-					lastPosition=v.Position;
-					_html += "<div class=\"h560 columns col2 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
+						lastPosition=v.Position;
+					}
+					else{}
 				}
 				else if(v.Position==3||v.Position==4){//540X280高度 上下
-					lastPosition=v.Position;
-					_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
+					}
+					else{}
 				}
 				counter++;
 			});
@@ -440,15 +456,17 @@ window.onload = function(){
 					counter=0;
 				}
 				if(v.Position==1){//楼层标题
-					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					}
 				}
 				else if(v.Position==2){//540X360高度
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
 						_html += "<div class=\"h360 columns col2 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
-					else if(0<counter<4){//限制广告数量4张以内
+					else if(0<counter&&counter<4){//限制广告数量4张以内
 						_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else{
@@ -469,15 +487,17 @@ window.onload = function(){
 					}
 				}
 				if(v.Position==1){//楼层标题
-					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					}
 				}
 				else if(v.Position==2){//320高度一行四列广告位
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告  2017-7-31 修改class h250-->h320
 						_html += "<div class=\"h320 columns col4 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
-					else if(0<counter<8){//限制广告数量8张以内
+					else if(0<counter&&counter<8){//限制广告数量8张以内
 						_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else{
@@ -497,15 +517,17 @@ window.onload = function(){
 					}
 				}
 				if(v.Position==1){//楼层标题
-					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					}
 				}
 				else if(v.Position==2){//250高度广告
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
 						_html += "<div class=\"h250 columns col2 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
-					else if(0<counter<8){//限制广告数量8张以内
+					else if(0<counter&&counter<8){//限制广告数量8张以内
 						_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else{
@@ -523,8 +545,10 @@ window.onload = function(){
 					counter=0;
 				}
 				if(v.Position==1){//楼层标题
-					lastPosition=v.Position;
-					beforeHtml= "<div class=\"block-title h120\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					if(!counter){
+						lastPosition=v.Position;
+						_html+= "<div class=\"block-title h120\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+					}
 				}
 				else if(v.Position==2){//360高度轮播
 					lastPosition=v.Position;
@@ -601,7 +625,7 @@ window.onload = function(){
 					if(!counter){//第一张270X360高广告位
 						afterHtml += "<div class=\"h360 columns col4 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
-					else if(0<counter&&counter<=7){//限制广告数量8张以内
+					else if(0<counter&&counter<8){//限制广告数量8张以内
 						afterHtml += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 				}
@@ -712,6 +736,7 @@ window.onload = function(){
 
 	}
 	Floor.loadFloor(0,_floorUrl);//刚进入时加载首页
+	mainSwiper.update()
 }
 
 //更新goUrl方法

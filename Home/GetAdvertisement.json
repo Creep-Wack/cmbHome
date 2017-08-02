@@ -13,6 +13,19 @@
         "EndTime": "/Date(1518278400000)/"
     },
     {
+        "AdvertisementName": "广告",
+        "AdvertisemenPageType": 1,
+        "marqueeText":"",
+        "ModelSysno": 1,
+        "ModelType":7,
+        "Position": 1,
+        "ResourceUrl": "images/common_title.jpg",
+        "AppUrl": "#####",
+        "Priority": "1",
+        "StartTime": "/Date(1486742400000)/",
+        "EndTime": "/Date(1518278400000)/"
+    },
+    {
         "AdvertisementName": "广告2",
         "AdvertisemenPageType": 1,
         "marqueeText":"",

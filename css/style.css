@@ -241,24 +241,27 @@ header{
 
 	/*横栏五列主要入口按钮  */
 	.nav-tab{
-		padding:14px 5px;
+		height:2.5rem;
 		text-align: center;
+		box-sizing:border-box;
+		padding:0.3rem 0 0;
+		overflow:hidden;
 	}
 	.nav-tab li{
 		float:left;
 		width:20%;
+		height:100%;
 		text-align: center;
-		margin:0 0 5px;
 	}
 	.nav-tab li a{
 		margin:0 5px;
-		display: block;
+		display: inline-block;
 		text-align: center;
 		overflow:hidden;
 	}
 	.nav-tab li a img{
 		width:100%;
-		display: block;
+		display: inline-block;
 	}
 	/*商城头条   */
 	#marquee{
@@ -278,21 +281,34 @@ header{
 	}
 	#marquee ul{margin-left:2.75rem;}
 	#marquee .swiper-slide{
-		height:100%;
-		line-height: 1.14rem;
+		height:1.2rem!important;
+		box-sizing: border-box;
 		font-size:0.40rem;
+
 	}
 	#marquee .swiper-slide a{
-		padding:5px 0;
+		display: block;
+		height:100%;
+		width:6.3rem;
+		line-height: 1.3rem;
+		position: relative;
+		padding-left:1rem;
+		overflow: hidden;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
 	}
 	#marquee .swiper-slide a:before{
 		content: "NEW";
-		display: inline-block;
+		position: absolute;
 		font-size: 0.24rem;
 		border: 1px solid #e70000;
 		border-radius: 2px;
 		color:#e70000;
-		width:auto;
+		top:50%;
+		left:0px;
+		width:0.7rem;
+		height:0.4rem;
+		margin-top:-0.21rem;
 		/*height:0.3rem;*/
 		line-height: 0.4rem;
 		text-align: center;
@@ -311,9 +327,11 @@ header{
 	}
 	.dailyDeal-swiper-container .deal-slide a{
 		display: block;
+		margin:0 5px;
 		width:3rem;
 		height:3.6rem;
 		text-align:center;
+		overflow:hidden;
 	}
 	.dailyDeal-swiper-container .deal-slide a img{
 
@@ -348,7 +366,7 @@ header{
 /*主页样式部分 END*/
 	/*common style*/
 	.h360.goods-list-wrap,.h360.goods-list-wrap .goods-swiper-container{
-		height:3.6rem;
+		height:4.2rem;
 	}
 	.h120{height:1.2rem;}
 	.h120 img{height:1.2rem;}
@@ -388,6 +406,9 @@ header{
 	.h580{
 		height:5.8rem;
 	}
+	.h560{
+		height:5.6rem;
+	}
 	.fullHeigt a{
 		height:100%;
 	}
@@ -409,6 +430,12 @@ header{
 	.common-h360-banner{
 		height:3.6rem;
 	}
+	.common-h360-banner a img{
+		height:3.6rem;
+	}
+/*body{
+	padding-bottom:1.4rem;
+}*/
 .main-swiper-container .main-slide{
 	width:100%;
 	padding-bottom:1.4rem;
