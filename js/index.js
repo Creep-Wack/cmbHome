@@ -435,7 +435,9 @@ window.onload = function(){
 					
 				}
 				else if(v.Position==2){//540X560高度
+					if(!counter){
 						lastPosition=v.Position;
+						_html += "<div class=\"h560 columns col2 clearfix\"><a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else{}
 				}
