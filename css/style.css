@@ -417,7 +417,9 @@ header{
 	}
 	.h360.fullHeight{
 		height:3.6rem;
-
+	}
+	.h580.fullHeight a img{
+		height:5.8rem;
 	}
 	.h360.fullHeight a{
 		width:100%;

@@ -687,44 +687,5 @@
         "Priority": "1",
         "StartTime": "/Date(1486742400000)/",
         "EndTime": "/Date(1518278400000)/"
-    },
-    {
-        "AdvertisementName": "广告",
-        "AdvertisemenPageType": 1,
-        "marqueeText":"",
-        "ModelSysno": 7,
-        "ModelType":1,
-        "Position": 2,
-        "ResourceUrl": "images/special_03.jpg",
-        "AppUrl": "#####",
-        "Priority": "1",
-        "StartTime": "/Date(1486742400000)/",
-        "EndTime": "/Date(1518278400000)/"
-    },
-    {
-        "AdvertisementName": "广告",
-        "AdvertisemenPageType": 1,
-        "marqueeText":"",
-        "ModelSysno": 7,
-        "ModelType":1,
-        "Position": 2,
-        "ResourceUrl": "images/special_02.jpg",
-        "AppUrl": "#####",
-        "Priority": "1",
-        "StartTime": "/Date(1486742400000)/",
-        "EndTime": "/Date(1518278400000)/"
-    },
-    {
-        "AdvertisementName": "广告",
-        "AdvertisemenPageType": 1,
-        "marqueeText":"",
-        "ModelSysno": 7,
-        "ModelType":1,
-        "Position": 2,
-        "ResourceUrl": "images/special_01.jpg",
-        "AppUrl": "#####",
-        "Priority": "1",
-        "StartTime": "/Date(1486742400000)/",
-        "EndTime": "/Date(1518278400000)/"
     }
 ]

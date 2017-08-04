@@ -23,16 +23,16 @@
 */
 var _oW = window.screen.width;
 
-var _floorUrl = '/Home/GetAdvertisement';//模块楼层
-var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-var _tabUrl = '/Home/GetSecondaryPage';//顶部导航
-var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
-var _tokenUrl = '/Home/GetToken';//token地址
+// var _floorUrl = '/Home/GetAdvertisement';//模块楼层
+// var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+// var _tabUrl = '/Home/GetSecondaryPage';//顶部导航
+// var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
+// var _tokenUrl = '/Home/GetToken';//token地址
 
-// var _floorUrl = 'Home/GetAdvertisement.json';//模块楼层
-// var _adUrl = 'Home/GetHomeAdvertisement.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-// var _tabUrl = 'Home/GetSecondaryPage.json';//顶部导航
-// var _dailyDealUrl = 'Home/GetDaypreference.json';//每日特惠商品列表
+var _floorUrl = 'Home/GetAdvertisement.json';//模块楼层
+var _adUrl = 'Home/GetHomeAdvertisement.json';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+var _tabUrl = 'Home/GetSecondaryPage.json';//顶部导航
+var _dailyDealUrl = 'Home/GetDaypreference.json';//每日特惠商品列表
 
 window.onload = function(){
 	// for rem  根文字大小调整
@@ -193,7 +193,7 @@ window.onload = function(){
 			success:function(data){
 				var content;
 				$.each(data,function(ind,obj){//一级遍历原始JSON对象
-						content  = "<div class=\"swiper-slide deal-slide\"><a href=\""+obj.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
+						content  = "<div class=\"swiper-slide deal-slide\"><a href=\""+obj.DaypreferenceLink+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
 						$('#dailyDealAd').append(content);
 
 				});
@@ -441,8 +441,8 @@ window.onload = function(){
 					}
 					else{}
 				}
-				else if(v.Position==3||v.Position==4){//540X280高度 上下
-					if(!counter){
+				else if(v.Position==3){//540X280高度 上下
+					if(counter<2){
 						lastPosition=v.Position;
 						_html += "<a href=\""+v.AppUrl+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default.jpg\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
