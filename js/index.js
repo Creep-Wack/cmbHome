@@ -279,7 +279,7 @@ window.onload = function(){
 			Slide.addAct(_Id);
 
 			// setTimeout('function(){Slide.Start();Slide.animateTo(300);}',1800);
-			
+			// document.body.scrollTop = document.documentElement.scrollTop = 0;
 			$('.show-slide').removeClass('show-slide');
 			if(_Id!=0){//二级页
 				Slide.verifyPage($('.slide-nav.active').attr('data-sysno'),_floorUrl);
@@ -290,6 +290,7 @@ window.onload = function(){
 			imgObj=$(".show-slide img");
 			lazyL();
 			Slide.ifClick=false;
+			 // $('.main-slide').height('auto');
 		}
 
 	});

@@ -28,12 +28,14 @@ img{
 }
 html{
 	font-size:34.7222px;
+	overflow-y:scroll;
+	
+	
 }
 body{
 	font-family: "microsoft yahei", '微软雅黑';
 	max-width:1080px;
-	margin:0 auto;
-	
+	margin:0 auto;	
 }
 .clearfix:after {
     clear: both;
@@ -53,6 +55,15 @@ header{
 }
 .red{
 	color:#e70000;
+	/*开启GPU硬件加速*/
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	/*防止抖动*/
+	-webkit-backface-visibility:hidden;
+	-webkit-perspective:1000;
 }
 /* 头部滑条导航部分 START */
 #indexPage{
