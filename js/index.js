@@ -19,9 +19,14 @@
 2、增加模块装载时计数验证  防止板块溢出
 3、修改了每日特惠商品样式
 4、删去部分冗余代码 
-5、修改跑马灯样式                                              
+5、修改跑马灯样式  
+
+2017-8-8 16:31:04  更新内容
+1、添加回到顶部按钮
+2、修复580高度轮播图片溢出问题                                            
 */
 var _oW = window.screen.width;
+var _oH = window.screen.height;
 
 // var _floorUrl = '/Home/GetAdvertisement';//模块楼层
 // var _adUrl = '/Home/GetHomeAdvertisement';//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
@@ -85,7 +90,7 @@ window.onload = function(){
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
-					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\" data-hash=\"slide\"><div class=\"floorCont\"></div></div>");
+					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\"><div class=\"floorCont\"></div></div>");
 					Slide.navCont.push(obj.Sysno);//导航容器组装
 				});
 				$('#top-nav').append(content);
@@ -217,11 +222,19 @@ window.onload = function(){
 	 var imgMark=0;
 
 	 window.onscroll=lazyL;
+	 var _oScroll =  document.getElementsByClassName('show-slide')[0];
+
+	 $(".main-slide").scroll(function(){
+	 	lazyL();
+ });
 	 function lazyL(){//懒加载
+	 	_oScroll =  document.getElementsByClassName('show-slide')[0];
+	 	// console.log(1);
 	 	imgMark=0;
 		imgObj=$(".show-slide img");
 	   var seeHeight = document.documentElement.clientHeight;
-	   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//兼容chrome
+	   // var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//兼容chrome
+	   var scrollTop = _oScroll.scrollTop || document.body.scrollTop;
 	   for(var i=imgMark;i<imgObj.length;i++){
 	     if(imgObj[i].offsetTop <seeHeight + scrollTop){
 	         if(imgObj[i].getAttribute("src")=="https://img01.mall.cmbchina.com/banner/default.jpg"){//二次验证
@@ -267,11 +280,13 @@ window.onload = function(){
 		// console.log(Slide.alreadyLoadArr);
 	}
 	var mainSwiper = new Swiper('.main-swiper-container',{
-		autoHeight:true,
 		resistanceRatio : 0,
 		observer:true,
 		touchAngle : 25,
 		observeParents:true,
+		onInit: function(swiper){
+			$('.main-swiper-container').height(_oH-$('#myNav').height()-$('#footer').height());
+		},
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
@@ -284,13 +299,13 @@ window.onload = function(){
 			if(_Id!=0){//二级页
 				Slide.verifyPage($('.slide-nav.active').attr('data-sysno'),_floorUrl);
 			}
-			
 			imgMark=0;
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
+			_oScroll =  document.getElementsByClassName('show-slide')[0];
 			imgObj=$(".show-slide img");
 			lazyL();
 			Slide.ifClick=false;
-			 // $('.main-slide').height('auto');
+			// $('html,body').animate({scrollTop:0},400);
 		}
 
 	});
@@ -739,7 +754,27 @@ window.onload = function(){
 
 	}
 	Floor.loadFloor(0,_floorUrl);//刚进入时加载首页
-	mainSwiper.update()
+	mainSwiper.update();
+
+
+// 回到顶部模块
+	
+	$('.main-slide').scroll(function(event){ 
+	    var wScrollY = _oScroll.scrollTop; // 当前滚动条位置               
+	    if (wScrollY >= _oH) {      
+	    	$('#goTop').fadeIn(400);   
+	    }  
+	    else{
+	    	$('#goTop').fadeOut(400); 
+	    }  
+	});
+
+	$('#goTop').on('tap',function(){
+		$('.show-slide').animate({scrollTop: 0},400); 
+	}); 
+	$('#goTop').on('click',function(){
+		$('.show-slide').animate({scrollTop: 0},400); 
+	});  
 }
 
 //更新goUrl方法
