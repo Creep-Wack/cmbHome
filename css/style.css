@@ -17,13 +17,6 @@ em,i{
 	font-style: normal;
 	/*开启GPU硬件加速*/
 	-webkit-transform: translateZ(0);
-	-moz-transform: translateZ(0);
-	-ms-transform: translateZ(0);
-	-o-transform: translateZ(0);
-	transform: translateZ(0);
-	/*防止抖动*/
-	-webkit-backface-visibility:hidden;
-	-webkit-perspective:1000;
 }
 img{
 	border:none;
@@ -36,15 +29,25 @@ img{
     display: table;
 }
 html{
+	height:100%;
+	overflow:hidden;
 	font-size:34.7222px;
-	overflow-y:scroll;
-	
-	
+	/*overflow-y:scroll;*/
 }
 body{
-	font-family: "microsoft yahei", '微软雅黑';
+	font-family: "microsoft yahei", '微软雅黑','Arial',;
 	max-width:1080px;
-	margin:0 auto;	
+	overflow: hidden;
+	margin-top:40px;
+	margin-bottom:0;
+	/*禁止文字复制*/
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);/* 取消IOS下DOM点击触发JS时有黑色高光*/
 }
 .clearfix:after {
     clear: both;
@@ -88,6 +91,7 @@ body{
 	line-height:42px;
 	padding-left:50px;
 	box-sizing: border-box;
+
 }
 #slide-line{
 	opacity: 0;
@@ -99,7 +103,7 @@ body{
 	bottom:-0.5px;
 	left:0;
 }
-#navCont div{text-align: center;font-size: 14px;}
+#myNav div{text-align: center;font-size: 14px;}
 
 .nav-swiper-container {
 	width:100%;
@@ -233,7 +237,7 @@ body{
 		background:rgba(255,255,255,.2);
 		border-radius:0.43rem;
 		border:none;
-		color:#e5e5e5;
+		color:#fff;
 		outline:none;
 	}
 	.search-box .search-btn{
@@ -364,8 +368,10 @@ body{
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
+		line-height: 0.4rem;
 	}
 	p.deal-name{
+		line-height: 0.32rem;
 		font-size:0.32rem;
 		color:#666;
 	}
@@ -459,8 +465,7 @@ body{
 .main-swiper-container{
 	width:100%;
 	height: 100%;
-	margin-top:40px;
-	margin-bottom:1.4rem;
+	
 	box-sizing: border-box;
 	overflow:hidden;
 }
@@ -530,6 +535,9 @@ body{
 	-webkit-overflow-scrolling:touch;
 	/*IOS同步滑动*/
 	box-sizing: border-box;
+}
+.main-slide::-webkit-scrollbar {
+    display: none;
 }
 /*.main-slide.show-slide{
 	height:auto!important;

@@ -289,14 +289,7 @@ window.onload = function(){
 		touchAngle : 25,
 		observeParents:true,
 		onInit: function(swiper){
-			var sj_headH =$('.common-top').height()||0;//手机银行高度修正
-				$('body').height(_oH-$('#myNav').height()-sj_headH-$('#footer').height());//初始化重新定义container 高度
-				$('body').css({
-					'margin-top':$('#myNav').height()+sj_headH,
-					'margin-bottom':$('#footer').height()
-			
-				});
-			
+			$('body').height(_oH-$('#myNav').height()-$('.common-top').height()-$('#footer').height());//初始化重新定义container 高度
 		},
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
