@@ -27,7 +27,7 @@
 
 	<header id="myNav">
 		<div id="navCont" class="clearfix">
-			<em id="slide-line"></em>
+			<!-- <em id="slide-line"></em> -->
 			<div class="fl slide-nav active" id="indexPage">首页<em></em></div>
 			<div class="swiper-container nav-swiper-container fl">
 				<div class="swiper-wrapper" id="top-nav">
@@ -39,66 +39,84 @@
 		</div>
 	</header>
 	
-		
-	<div class="swiper-container main-swiper-container">
-		<div class="swiper-wrapper" id="main-swiper-wrap">
-			<!-- 首屏主页 -->
-			<div class="main-slide swiper-slide index-page show-slide">
-				<!-- 首页通栏轮播 -->
-				<div class="swiper-container banner-swiper-container container" id="banner-slider-container">
-					<!-- <div class="swiper-wrapper" id="banner-slider-wrap">
-						
-					</div> -->
-					<!-- 分页器容器 -->
-					<div class="banner-pagination"></div>
-					<!-- 搜索栏 -->
-					<div class="search">
-						<div class="search-box">
-							<input class="text" type="text" id="keyword" readonly="readonly" value="LAB SERIES朗仕">
-							<a class="search-btn" onclick="goUrl('cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fProduct%2fSearch%3fkeyword%3dmykeyword%26bannersysno%3d0%26hmsr%3dcl5%26hmmd%3dsearch%26hmpl%3d%26hmkw%3d%26hmci%3d%26pushwebview%3d1&title=&version=v2')" href="#" id="search">
-								<span class="icons search-icon"></span>
-							</a>
+	<div id="mainWrap">
+		<div id='main-swiper-block'>
+			<div id='loading-block'>
+				 <div class="loader">
+				    <div class="loader-inner line-scale-pulse-out">
+				      <div></div>
+				      <div></div>
+				      <div></div>
+				      <div></div>
+				      <div></div>
+				    </div>
+				  </div>
+			</div>
+			<div class="swiper-container main-swiper-container">
+				<div class="swiper-wrapper" id="main-swiper-wrap">
+					<!-- 首屏主页 -->
+					<div class="main-slide swiper-slide index-page show-slide">
+						<!-- 首页通栏轮播 -->
+						<div class="swiper-container banner-swiper-container container" id="banner-slider-container">
+							<!-- <div class="swiper-wrapper" id="banner-slider-wrap">
+								
+							</div> -->
+							<!-- 分页器容器 -->
+							<div class="banner-pagination"></div>
+							<!-- 搜索栏 -->
+							<div class="search">
+								<div class="search-box">
+									<input class="text" type="text" id="keyword" readonly="readonly" value="LAB SERIES朗仕">
+									<a class="search-btn" onclick="goUrl('cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fProduct%2fSearch%3fkeyword%3dmykeyword%26bannersysno%3d0%26hmsr%3dcl5%26hmmd%3dsearch%26hmpl%3d%26hmkw%3d%26hmci%3d%26pushwebview%3d1&title=&version=v2')" href="#" id="search">
+										<span class="icons search-icon"></span>
+									</a>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<!-- 首页通栏轮播 END-->
-				
-				
-				<section class="container">
-					<!-- 横栏五列主要入口按钮 START -->
-					<ul class="nav-tab clearfix" id="nav-tab">
+						<!-- 首页通栏轮播 END-->
 						
-		
-					</ul>
-					<!-- 横栏五列主要入口按钮 END -->
-					<!-- 商城头条 PART START -->
-					<div class="swiper-container marquee-swiper-container" id="marquee">
-						<span class="topline-icon"></span>
-						<ul class="swiper-wrapper" id="marquee-wrap">
+						
+						<section class="container">
+							<!-- 横栏五列主要入口按钮 START -->
+							<ul class="nav-tab clearfix" id="nav-tab">
+								
+				
+							</ul>
+							<!-- 横栏五列主要入口按钮 END -->
+							<!-- 商城头条 PART START -->
+							<div id="marqueeCont">
+								<a href="" class="topline-icon"></a>
+								<div class="swiper-container marquee-swiper-container" id="marquee">
+									
+									<ul class="swiper-wrapper" id="marquee-wrap">
 
-						</ul>
-					</div>
-					<!-- 商城头条 PART END -->
-				</section>
+									</ul>
+								</div>
+							</div>
+							
+							<!-- 商城头条 PART END -->
+						</section>
 
-				<section class="container">
-					<!-- 每日特惠 BLOCK START -->
-					<div id="dailyDeal" class="container">
-						<div id="dailyDeal-banner"></div>
-						<div class="swiper-container dailyDeal-swiper-container">
-							<div class="swiper-wrapper" id="dailyDealAd"></div>
-						</div>
+						<section class="container">
+							<!-- 每日特惠 BLOCK START -->
+							<div id="dailyDeal" class="container">
+								<div id="dailyDeal-banner"></div>
+								<div class="swiper-container dailyDeal-swiper-container">
+									<div class="swiper-wrapper" id="dailyDealAd"></div>
+								</div>
+							</div>
+							
+						</section>
+
+						
+						<div class="floorCont"></div>
 					</div>
 					
-				</section>
-
-				
-				<div class="floorCont"></div>
+				</div>
 			</div>
-
-			
 		</div>
-		</div>
+	</div>
+	
 
 		<div id='goTop'>
 			<img src="images/goTop.png" alt="回到顶部">
@@ -111,5 +129,6 @@
 	</body>
 	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="./js/swiper.jquery.min.js"></script>
+
 	<script type="text/javascript" src="./js/index.js"></script>
 </html>

@@ -35,11 +35,10 @@ html{
 	/*overflow-y:scroll;*/
 }
 body{
-	font-family: "microsoft yahei", '微软雅黑','Arial',;
+	font-family: "microsoft yahei", '微软雅黑','Arial';
 	max-width:1080px;
 	overflow: hidden;
-	margin-top:40px;
-	margin-bottom:0;
+	margin:0 auto;
 	/*禁止文字复制*/
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -93,7 +92,7 @@ body{
 	box-sizing: border-box;
 
 }
-#slide-line{
+/*#slide-line{
 	opacity: 0;
 	position: absolute;
 	background:#e40f0f;
@@ -102,7 +101,7 @@ body{
 	z-index:99;
 	bottom:-0.5px;
 	left:0;
-}
+}*/
 #myNav div{text-align: center;font-size: 14px;}
 
 .nav-swiper-container {
@@ -178,6 +177,91 @@ body{
 		font-size:0.8rem;
 	}
 	/*首页弹屏 END */
+/*主体部分START*/
+#mainWrap{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+#main-swiper-block{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	position: relative;
+}
+
+/*LOAD部分动画START*/
+
+#loading-block{
+	width:100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	background:#fff;
+	z-index:99;
+	display: none;
+}
+#loading-block .loader{
+	height:46px;
+	width:82px;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin-left:-42px;
+	margin-top:-23px;
+}
+@-webkit-keyframes line-scale-pulse-out {
+  0% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); }
+
+  50% {
+    -webkit-transform: scaley(0.4);
+            transform: scaley(0.4); }
+
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); } 
+}
+
+@keyframes line-scale-pulse-out {
+  0% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); }
+
+  50% {
+    -webkit-transform: scaley(0.4);
+            transform: scaley(0.4); }
+
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); } 
+}
+
+.line-scale-pulse-out > div {
+  background-color: #ccc;
+  width: 4px;
+  height: 30px;
+  border-radius: 2px;
+  margin: 2px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: inline-block;
+  -webkit-animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);
+  animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85); 
+}
+  .line-scale-pulse-out > div:nth-child(2), .line-scale-pulse-out > div:nth-child(4) {
+    -webkit-animation-delay: 0.2s !important;
+            animation-delay: 0.2s !important; 
+  }
+  .line-scale-pulse-out > div:nth-child(1), .line-scale-pulse-out > div:nth-child(5) {
+    -webkit-animation-delay: 0.4s !important;
+            animation-delay: 0.4s !important; }
+/*LOAD部分动画END*/
+
+
+/*主体部分END*/
 	/*首页通栏轮播	*/
 	.banner-swiper-container,.common-h580-banner{
 		height:5.8rem;
@@ -205,6 +289,7 @@ body{
 	}
 	.banner-pagination .swiper-pagination-bullet-active,.common-pagination .swiper-pagination-bullet-active{
 		background-color: #fff;
+		border:1px solid #c5c5c5;
 	}
 	.banner-swiper-container .search{
 		height:0.86rem;
@@ -237,7 +322,7 @@ body{
 		background:rgba(255,255,255,.2);
 		border-radius:0.43rem;
 		border:none;
-		color:#fff;
+		color:#d3d3d3;
 		outline:none;
 	}
 	.search-box .search-btn{
@@ -286,22 +371,29 @@ body{
 		display: inline-block;
 	}
 	/*商城头条   */
-	#marquee{
+	#marqueeCont{
 		height:1.2rem;
-		padding:0 0.48rem;
 		position: relative;
-		display:none;
+		padding:0 0.6rem;
 	}
-	#marquee .topline-icon{
+	#marquee{
+		height:100%;
+		width:7rem;
+		position: absolute;
+		display:none;
+		left:3rem;
+	}
+	#marqueeCont .topline-icon{
+		
 		width:1.85rem;
 		height:0.36rem;
 		position: absolute;
 		background:url(../images/icons/top-line.png) center top no-repeat;
 		background-size: 100% auto;
 		top:50%;
+		left:0.6rem;
 		margin-top:-0.18rem;
 	}
-	#marquee ul{margin-left:2.75rem;}
 	#marquee .swiper-slide{
 		height:1.2rem!important;
 		box-sizing: border-box;
@@ -311,7 +403,7 @@ body{
 	#marquee .swiper-slide a{
 		display: block;
 		height:100%;
-		width:6.3rem;
+		width:6rem;
 		line-height: 1.3rem;
 		position: relative;
 		padding-left:1rem;
@@ -329,10 +421,10 @@ body{
 		top:50%;
 		left:0px;
 		width:0.7rem;
-		height:0.4rem;
-		margin-top:-0.21rem;
+		height:0.34rem;
+		margin-top:-0.16rem;
 		/*height:0.3rem;*/
-		line-height: 0.4rem;
+		line-height: 0.35rem;
 		text-align: center;
 	}
 
@@ -389,8 +481,11 @@ body{
 	
 /*主页样式部分 END*/
 	/*common style*/
-	.h360.goods-list-wrap,.h360.goods-list-wrap .goods-swiper-container{
+	.h420.goods-list-wrap,.h420.goods-list-wrap .goods-swiper-container{
 		height:4.2rem;
+	}
+	.h420.goods-list-wrap .swiper-slide{
+		width:3.2rem!important;
 	}
 	.h120{height:1.2rem;}
 	.h120 img{height:1.2rem;}
