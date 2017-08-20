@@ -265,17 +265,6 @@ body{
 
 /*主体部分END*/
 	/*首页通栏轮播	*/
-	#banner-out-wrap{
-		height:5rem;
-		width:100%;
-		position: relative;
-	}
-	#banner-slider-container{
-		width:100%;
-		height:100%;
-		z-index:0;
-		position: absolute!important;
-	}
 	.common-h500-banner{
 		height:5rem;
 		position: relative;
@@ -283,8 +272,14 @@ body{
 	.banner-swiper-container img,.common-h500-banner img{
 		height:5rem;
 	}
+	#index-banner-wrap .banner-swiper-container{
+		height:5rem;
+		width:100%;
+		position: absolute;
+		z-index:1;
+		background:#f0f;
+	}
 	.banner-pagination,.common-pagination{
-		width: 100%;
 		position: absolute;
 		bottom:.9rem!important;
 		z-index:10;
@@ -316,14 +311,7 @@ body{
 		opacity: 1;
 		background-color: #fff;
 	}
-	#banner-out-wrap .search{
-		height:0.86rem;
-		width:100%;
-		position: absolute;
-		bottom:0.1rem;
-		left:0;
-		z-index:20;
-	}
+	
 	#banner-slider-wrap{
 		height:100%;
 	}
@@ -331,48 +319,7 @@ body{
 		height:100%!important;
 	}
 	.banner-slide img{width:100%;height:100%;}
-	#banner-out-wrap .search .search-box{
-		height:100%;
-		line-height:0.89rem;
-		margin:0 0.5rem;
-		position: relative;
-	}
-	.search .search-box .text{
-		display: block;
-		height:100%;
-		width:100%;
-		padding:0 10px;
-		line-height:0.89rem;
-		box-sizing: border-box;
-		z-index:10;
-		background:rgba(255,255,255,.8);
-		border-radius:0.2rem;
-		border:none;
-		color:#aaa;
-		outline:none;
-		text-align: center;
-	}
-	.search-box .search-btn{
-		position: absolute;
-		height:100%;
-		width:100%;
-		text-align: center;
-		left:0;
-		top:0;
-		line-height:.86rem;
-		display: block;
-	}
-	.search-btn .search-icon{
-		width:.5rem;
-		height:.48rem;
-		position: absolute;
-		top:50%;
-		right:.5rem;
-		margin-top: -0.24rem;
-		background:url(../images/icons/search.png) top center  no-repeat;
-		background-size: 100% auto;
-	}
-
+	
 	/*横栏五列主要入口按钮  */
 	.nav-tab{
 		height:2.3rem;
@@ -664,3 +611,64 @@ body{
 .main-slide::-webkit-scrollbar {
     display: none;
 }
+
+
+#index-banner-wrap{
+	z-index:1;
+	height:5rem;
+	width:100%;
+	position: relative;
+}
+ .search{
+		height:0.86rem;
+		width:100%;
+		position: fixed;
+		top:4.8rem;
+		left:0;
+		z-index:20;
+	}
+ .search .search-box{
+		height:100%;
+		line-height:0.89rem;
+		margin:0 0.5rem;
+		position: relative;
+	}
+	#index-banner-wrap .banner-pagination{
+		z-index:20;
+		width:100%;
+	}
+	.search .search-box .text{
+		display: block;
+		height:100%;
+		width:100%;
+		padding:0 10px;
+		line-height:0.89rem;
+		box-sizing: border-box;
+		z-index:10;
+		background:rgba(255,255,255,.8);
+		border-radius:0.2rem;
+		border:none;
+		color:#aaa;
+		outline:none;
+		text-align: center;
+	}
+	.search-box .search-btn{
+		position: absolute;
+		height:100%;
+		width:100%;
+		text-align: center;
+		left:0;
+		top:0;
+		line-height:.86rem;
+		display: block;
+	}
+	.search-btn .search-icon{
+		width:.5rem;
+		height:.48rem;
+		position: absolute;
+		top:50%;
+		right:.5rem;
+		margin-top: -0.24rem;
+		background:url(../images/icons/search.png) top center  no-repeat;
+		background-size: 100% auto;
+	}

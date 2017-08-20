@@ -30,19 +30,6 @@ window.onload = function(){
 	    win.addEventListener(resizeEvt, recalc, true);
 	})(document, window); 
 
- document.addEventListener('touchstart',touch, false); 
-  document.addEventListener('touchend',touch, false); 
- function touch(event){
- 	var event = event || window.event;  
- 	switch(event.type){  
-            case "touchstart":  
-                $('#banner-slider-container').css('z-index','-1') ;
-                break;  
-            case "touchend":  
-                $('#banner-slider-container').css('z-index','0') ;
-                break;   
-        }  
- }
 
 // 顶部滑条部分 START
 	
@@ -156,7 +143,7 @@ window.onload = function(){
 					$('#banner-slider-container').prepend(content);
 					//首页通栏轮播Swiper
 					var bannerSwiper = new Swiper('.banner-swiper-container',{
-						autoplay:3000,
+						autoplay:false,
 						pagination : '.banner-pagination',
 						loop:true,
 						setWrapperSize :true,
