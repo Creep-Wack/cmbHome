@@ -128,7 +128,7 @@ window.onload = function(){
 
 				});
 				if(lunboArr.length==0){//无首屏轮播
-					$('#banner-slider-container').hide();
+					$('#banner-out-wrap').hide();
 				}
 				else if(lunboArr.length==1){//一条首屏轮播
 					content = "<div class=\"banner-slide swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adPageType="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-sysNo="+lunboArr[0].Sysno+" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
@@ -273,10 +273,9 @@ window.onload = function(){
 			fixViewHeight();
 		},
 		onTouchStart: function(swiper,even){
-			if(mainSwiper.activeIndex!=0){
+			if(mainSwiper.activeIndex!=0){//不在首页时往首页滑动将会将首页bannerz-index设为-1
 				$('#banner-slider-container').css('z-index','-1');
 			}
-	      
 	    },
 	    onTouchEnd: function(swiper){
 	    	$('#banner-slider-container').css('z-index','10');
