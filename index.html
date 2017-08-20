@@ -18,7 +18,7 @@
 		<!-- 弹屏主体 -->
 		<div id="float_main">
 			<a href="#">
-				<img src="images/test.jpg">
+				<img src="">
 			</a>
 		</div>
 		<!-- 关闭弹屏窗口 -->
@@ -42,15 +42,9 @@
 	<div id="mainWrap">
 		<div id='main-swiper-block'>
 			<div id='loading-block'>
-				 <div class="loader">
-				    <div class="loader-inner line-scale-pulse-out">
-				      <div></div>
-				      <div></div>
-				      <div></div>
-				      <div></div>
-				      <div></div>
-				    </div>
-				  </div>
+				<div class="load-container load">
+					<div class="loader"></div>
+    			</div>
 			</div>
 			<div class="swiper-container main-swiper-container">
 				<div class="swiper-wrapper" id="main-swiper-wrap">
@@ -66,8 +60,8 @@
 							<!-- 搜索栏 -->
 							<div class="search">
 								<div class="search-box">
-									<input class="text" type="text" id="keyword" readonly="readonly" value="LAB SERIES朗仕">
-									<a class="search-btn" onclick="goUrl('cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fProduct%2fSearch%3fkeyword%3dmykeyword%26bannersysno%3d0%26hmsr%3dcl5%26hmmd%3dsearch%26hmpl%3d%26hmkw%3d%26hmci%3d%26pushwebview%3d1&title=&version=v2')" href="#" id="search">
+									<input class="text" type="text" id="keyword" readonly="readonly" value="搜索您想要的商品">
+									<a class="search-btn" onclick="goUrl(this)" href="javascript:void(0)" id="search" data-adpagetype="0" data-modelsysno="0" data-position="0" data-sysno="0" data-link="cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fProduct%2fSearch%3fpushwebview%3d1&title=&version=v2">
 										<span class="icons search-icon"></span>
 									</a>
 								</div>
@@ -119,8 +113,9 @@
 	
 
 		<div id='goTop'>
-			<img src="images/goTop.png" alt="回到顶部">
+			<img src="http://img01.mall.cmbchina.com/banner/newhome/goTop.png" alt="回到顶部">
 		</div>
+		<input type="hidden" value="@ViewBag.Token" id="token"/>
 		<footer id="footer">
 			<ul class="clearfix" id="footer-wrap">
 				
@@ -129,6 +124,5 @@
 	</body>
 	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="./js/swiper.jquery.min.js"></script>
-
 	<script type="text/javascript" src="./js/index.js"></script>
 </html>
