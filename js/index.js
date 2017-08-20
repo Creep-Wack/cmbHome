@@ -30,19 +30,7 @@ window.onload = function(){
 	    win.addEventListener(resizeEvt, recalc, true);
 	})(document, window); 
 
- document.addEventListener('touchstart',touch, false); 
-  document.addEventListener('touchend',touch, false); 
- function touch(event){
- 	var event = event || window.event;  
- 	switch(event.type){  
-            case "touchstart":  
-                $('#banner-slider-container').css('z-index','-1') ;
-                break;  
-            case "touchend":  
-                $('#banner-slider-container').css('z-index','0') ;
-                break;   
-        }  
- }
+ 
 
 // 顶部滑条部分 START
 	
@@ -284,6 +272,15 @@ window.onload = function(){
 		onInit: function(swiper){
 			fixViewHeight();
 		},
+		onTouchStart: function(swiper,even){
+			if(mainSwiper.activeIndex!=0){
+				$('#banner-slider-container').css('z-index','-1');
+			}
+	      
+	    },
+	    onTouchEnd: function(swiper){
+	    	$('#banner-slider-container').css('z-index','10');
+	    },
 		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
 			var _Id = swiper.activeIndex;
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
