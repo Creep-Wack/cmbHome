@@ -293,7 +293,7 @@ body{
 	.common-pagination{
 		bottom:.1rem!important;
 	}
-	.banner-pagination .swiper-pagination-bullet{
+	.common-pagination .swiper-pagination-bullet,.banner-pagination .swiper-pagination-bullet{
 		opacity: 0.1;
 		/*border:1px solid #fff;*/
 		width:4px;
@@ -305,13 +305,6 @@ body{
 		background-color: #fff;
 	}
 
-	.common-pagination .swiper-pagination-bullet{
-		opacity: 0.1;
-		/*border:1px solid #fff;*/
-		width:6px;
-		height:6px;
-		margin:0 6px!important;
-	}
 	.common-pagination .swiper-pagination-bullet-active{
 		opacity: 1;
 		background-color: #fff;

@@ -5,7 +5,7 @@
 // var _dailyDealUrl = '/Home/GetDaypreference';//每日特惠商品列表
 // var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger';//数据统计接口
 // var _floorUrl = '/Home/GetAdvertisement';//模块楼层
-var _AjaxQueue=[];
+
 var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
 	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
 	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
@@ -74,12 +74,7 @@ window.onload = function(){
 					Slide.navCont.push(obj.Sysno);//导航容器组装
 				});
 				$('#top-nav').append(content);
-				navSwiper.update();
-				$.each(Slide.navCont,function(key,value){
-					_AjaxQueue.push(value);
-					setTimeout(function(){Floor.loadFloor(value,_floorUrl)},50*key);
-				});  
-				                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+				navSwiper.update();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 			}
 		});	
 	}
@@ -91,11 +86,6 @@ window.onload = function(){
 
 //首页对象 
 	var CmbIndex={};
-	CmbIndex.RemoveAjaxQueue = function(_value){//从ajax队列中删除
-		if(_AjaxQueue.indexOf(_value)){
-			_AjaxQueue.splice(_AjaxQueue.indexOf(_value),1);
-		}
-	}
 	CmbIndex.loadAdvertisement = function(_url){//装载首页固定模块
 		$.ajax({
 			type:'GET',
@@ -259,7 +249,18 @@ window.onload = function(){
 	//顶部滑条跟随			  
 	//Swiper部分
 	//主页面整体Swiper
-	
+	Slide.alreadyLoadArr=new Array();//存储已加载的页面
+	Slide.verifyPage = function(num,link){//验证页面
+		if(Slide.alreadyLoadArr.indexOf(num)==-1){
+			Slide.alreadyLoadArr.push(num);
+			Floor.clear();
+			Floor.loadFloor(num,link);
+		}
+		else{
+			return;
+		}
+		// console.log(Slide.alreadyLoadArr);
+	}
 	
 	mainSwiper = new Swiper('.main-swiper-container',{
 		resistanceRatio : 0,
@@ -285,7 +286,9 @@ window.onload = function(){
 			
 			$('.show-slide').removeClass('show-slide');
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
-			
+			if(_Id!=0){//二级页
+				Slide.verifyPage($('.show-slide').attr('data-sysno'),_floorUrl);
+			}
 			imgMark=0;
 			
 			_oScroll =  document.getElementsByClassName('show-slide')[0];
@@ -358,8 +361,7 @@ window.onload = function(){
 	}
 	// console.log(Slide.navCont);
 	Floor.loadFloor = function(sysNo,_url){//装载楼层
-		
-		CmbIndex.RemoveAjaxQueue(sysNo);
+		$('#loading-block').show();
 		$.ajax({
 			type:'GET',
 			url:_url,
@@ -371,7 +373,7 @@ window.onload = function(){
 				console.log('error'+arguments[1]);
 			},
 			success:function(data){
-				Floor.clear();//清空一次
+				var startDate=new Date();
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					if(Floor.SysnoCont.indexOf(obj.ModelSysno)==-1){//新模块则新建一个数组存放模块内容
@@ -393,8 +395,10 @@ window.onload = function(){
 				$('#loading-block').hide();
 				lazyL();
 				Floor.reDefineSwiper();
-				mainSwiper.update();
 				mainSwiper.onResize();
+				var endTime = new Date();
+				console.log(sysNo+'||'+(endTime-startDate));
+				
 			}	
 		});		
 	}
@@ -860,3 +864,8 @@ IndexStatistics.updateDeviceId = function(){//机器唯一识别码
 	}
 	return localStorage.myDeviceId;
 }
+
+
+
+
+
