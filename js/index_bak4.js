@@ -525,9 +525,6 @@ CmbIndex.RemoveAjaxQueue = function(_value){
 	if(_AjaxQueue.indexOf(_value)){
 		_AjaxQueue.splice(_AjaxQueue.indexOf(_value),1);
 	}
-	if(_AjaxQueue.length==0){
-		lazyL();
-	}
 
 }
 

@@ -1,15 +1,15 @@
 
 
 // var _adUrl = '/Home/GetHomeAdvertisement',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-//     _tabUrl = '/Home/GetSecondaryPage',//顶部导航
-//     _dailyDealUrl = '/Home/GetDaypreference',//每日特惠商品列表
-//     _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
-//     _floorUrl = '/Home/GetAdvertisement',//模块楼层
-//     mainSwiper,
+// 	_tabUrl = '/Home/GetSecondaryPage',//顶部导航
+// 	_dailyDealUrl = '/Home/GetDaypreference',//每日特惠商品列表
+// 	_statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
+// 	_floorUrl = '/Home/GetAdvertisement',//模块楼层
+// 	mainSwiper,
 // 	navNameArr= ['首页'] ,
 // 	_oW = document.documentElement.clientWidth,
-// 	_oH = document.documentElement.clientHeight;
-
+// 	_oH = document.documentElement.clientHeight,
+// 	_AjaxQueue=[];
 var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
 	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
 	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
@@ -18,7 +18,9 @@ var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据�
 	mainSwiper,
 	navNameArr= ['首页'] ,
 	_oW = document.documentElement.clientWidth,
-	_oH = document.documentElement.clientHeight;
+	_oH = document.documentElement.clientHeight,
+	_AjaxQueue = [],
+	_useCache = true;
 
 
 window.onload = function(){
@@ -78,7 +80,12 @@ window.onload = function(){
 					Slide.navCont.push(obj.Sysno);//导航容器组装
 				});
 				$('#top-nav').append(content);
-				navSwiper.update();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+				navSwiper.update();
+				
+				$.each(Slide.navCont,function(key,value){
+					_AjaxQueue.push(value);
+					setTimeout(function(){Floor.loadFloor(value,_floorUrl)},50*key);
+				});
 			}
 		});	
 	}
@@ -90,6 +97,14 @@ window.onload = function(){
 
 //首页对象 
 	var CmbIndex={};
+	CmbIndex.RemoveAjaxQueue = function(_value){//从ajax队列中删除
+		if(_AjaxQueue.indexOf(_value)){
+			_AjaxQueue.splice(_AjaxQueue.indexOf(_value),1);
+		}
+		if(!_AjaxQueue.length){
+			$('#loading-block').hide();
+		}
+	}
 	CmbIndex.loadAdvertisement = function(_url){//装载首页固定模块
 		$.ajax({
 			type:'GET',
@@ -253,18 +268,7 @@ window.onload = function(){
 	//顶部滑条跟随			  
 	//Swiper部分
 	//主页面整体Swiper
-	Slide.alreadyLoadArr=new Array();//存储已加载的页面
-	Slide.verifyPage = function(num,link){//验证页面
-		if(Slide.alreadyLoadArr.indexOf(num)==-1){
-			Slide.alreadyLoadArr.push(num);
-			Floor.clear();
-			Floor.loadFloor(num,link);
-		}
-		else{
-			return;
-		}
-		// console.log(Slide.alreadyLoadArr);
-	}
+	
 	
 	mainSwiper = new Swiper('.main-swiper-container',{
 		resistanceRatio : 0,
@@ -290,12 +294,7 @@ window.onload = function(){
 			
 			$('.show-slide').removeClass('show-slide');
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
-			if(!$('.show-slide').children('.floorCont').html()){
-				$('#loading-block').show();
-			}
-			if(_Id!=0){//二级页
-				setTimeout(function(){Slide.verifyPage($('.show-slide').attr('data-sysno'),_floorUrl);},500);
-			}
+			
 			imgMark=0;
 			
 			_oScroll =  document.getElementsByClassName('show-slide')[0];
@@ -369,6 +368,7 @@ window.onload = function(){
 	// console.log(Slide.navCont);
 	Floor.loadFloor = function(sysNo,_url){//装载楼层
 		
+		CmbIndex.RemoveAjaxQueue(sysNo);
 		$.ajax({
 			type:'GET',
 			url:_url,
@@ -380,7 +380,7 @@ window.onload = function(){
 				console.log('error'+arguments[1]);
 			},
 			success:function(data){
-				var startDate=new Date();
+				Floor.clear();//清空一次
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					if(Floor.SysnoCont.indexOf(obj.ModelSysno)==-1){//新模块则新建一个数组存放模块内容
@@ -398,12 +398,10 @@ window.onload = function(){
 				if(!$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).html()){
 					$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
 				}
-				
-				$('#loading-block').hide();
 				lazyL();
 				Floor.reDefineSwiper();
+				mainSwiper.update();
 				mainSwiper.onResize();
-				
 			}	
 		});		
 	}
@@ -422,7 +420,7 @@ window.onload = function(){
 				}
 				if(v.Position==1){//楼层标题
 					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
+					_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 				}
 				else if(v.Position==2){//580高度轮播
 					lastPosition=v.Position;
@@ -453,7 +451,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 					}
 					else{}
 					
@@ -484,7 +482,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 					}
 				}
 				else if(v.Position==2){//540X360高度
@@ -515,7 +513,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 					}
 				}
 				else if(v.Position==2){//320高度一行四列广告位
@@ -545,7 +543,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 					}
 				}
 				else if(v.Position==2){//250高度广告
@@ -573,7 +571,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 					}
 				}
 				else if(v.Position==2){//360高度轮播
@@ -624,7 +622,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					lastPosition=v.Position;
 					// _html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
-					beforeHtml="<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
+					beforeHtml="<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\" alt=\""+v.AdvertisementName+"\"></div>";
 				}
 				else if(v.Position==2){//360高度轮播
 					lastPosition=v.Position;
@@ -869,8 +867,3 @@ IndexStatistics.updateDeviceId = function(){//机器唯一识别码
 	}
 	return localStorage.myDeviceId;
 }
-
-
-
-
-

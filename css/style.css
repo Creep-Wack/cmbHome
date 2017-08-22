@@ -61,7 +61,7 @@ body{
 	width:100%;
 }
 .floorCont{
-	background:#ededed;
+	background:#fafafa;
 }
 #myNav{
 	max-width:1080px;
@@ -204,8 +204,8 @@ body{
 	top:0;
 	left:0;
 	background:#fff;
-	z-index:99;
-	display: none;
+	z-index:100;
+	/*display: none;*/
 }
 #loading-block .load-container{
 	width:100%;
