@@ -18,7 +18,10 @@ var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据�
 	mainSwiper,
 	navNameArr= ['首页'] ,
 	_oW = document.documentElement.clientWidth,
-	_oH = document.documentElement.clientHeight;
+	_oH = document.documentElement.clientHeight,
+	_floorArrow = ['0'],//楼层装载指针
+	_floorCont = new Array();//楼层内容容器
+
 
 
 window.onload = function(){
@@ -293,8 +296,13 @@ window.onload = function(){
 			if(!$('.show-slide').children('.floorCont').html()){
 				$('#loading-block').show();
 			}
-			if(_Id!=0){//二级页
+			if(_floorArrow.indexOf($('.show-slide').attr('data-sysno'))==-1){//一级验证确认当前页面之前没加载过
 				setTimeout(function(){Slide.verifyPage($('.show-slide').attr('data-sysno'),_floorUrl);},500);
+			}
+			else{//加载过，已经在楼层容器中
+				// console.log(1);
+				$('.show-slide').children('.floorCont').html(_floorCont[_floorArrow.indexOf($('.show-slide').attr('data-sysno'))]);
+				$('#loading-block').hide();
 			}
 			imgMark=0;
 			
@@ -396,7 +404,10 @@ window.onload = function(){
 				// console.log(Slide.navCont.indexOf(+sysNo));
 				//2017-8-1 14:05:39  更改楼层装载方式
 				if(!$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).html()){
-					$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
+					$('.floorCont').html('').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
+					_floorArrow.push(sysNo);
+					_floorCont.push(content);
+
 				}
 				
 				$('#loading-block').hide();
