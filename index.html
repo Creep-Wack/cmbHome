@@ -13,7 +13,17 @@
 		<link rel="stylesheet" type="text/css" href="./css/swiper-3.4.2.min.css" >
 	</head>
 	<body>
-	
+	<div id="newGuide">
+		<div id="guideMask">
+
+		</div>
+		<div class="aniPart">
+			<img src="https://img01.mall.cmbchina.com/banner/newhome/guideHand.png"/>
+		</div>
+		<div id='closeGuide'>
+			<img src="https://img01.mall.cmbchina.com/banner/newhome/closeGuide.png"/>
+		</div>
+	</div>
 	<!-- 弹屏 START-->
 
 	<div id="float_wrap">
@@ -52,7 +62,7 @@
 			<div class="swiper-container main-swiper-container">
 				<div class="swiper-wrapper" id="main-swiper-wrap">
 					<!-- 首屏主页 -->
-					<div class="main-slide swiper-slide index-page show-slide">
+					<div class="main-slide swiper-slide index-page show-slide" data-sysno="0">
 						<!-- 首页通栏轮播 -->
 						<div id="banner-out-wrap">
 							<div class="swiper-container banner-swiper-container container" id="banner-slider-container">
@@ -119,7 +129,7 @@
 	
 
 		<div id='goTop'>
-			<img src="http://img01.mall.cmbchina.com/banner/newhome/goTop.png" alt="回到顶部">
+			<img src="https://img01.mall.cmbchina.com/banner/newhome/goTop.png" alt="回到顶部">
 		</div>
 		<input type="hidden" value="@ViewBag.Token" id="token"/>
 		<footer id="footer">

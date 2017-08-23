@@ -8,8 +8,9 @@
 //     mainSwiper,
 // 	navNameArr= ['首页'] ,
 // 	_oW = document.documentElement.clientWidth,
-// 	_oH = document.documentElement.clientHeight;
-
+// 	_oH = document.documentElement.clientHeight,
+// 	_floorArrow = [],//楼层装载指针
+// 	_floorCont = new Array();//楼层内容容器
 var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
 	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
 	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
@@ -19,7 +20,7 @@ var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据�
 	navNameArr= ['首页'] ,
 	_oW = document.documentElement.clientWidth,
 	_oH = document.documentElement.clientHeight,
-	_floorArrow = ['0'],//楼层装载指针
+	_floorArrow = [],//楼层装载指针
 	_floorCont = new Array();//楼层内容容器
 
 
@@ -285,11 +286,11 @@ window.onload = function(){
 	    onTouchEnd: function(swiper){
 	    	$('#banner-slider-container').css('z-index','10');
 	    },
-		onSlideChangeEnd:function(swiper){//主页面slide切换完成触发
+		onSlideChangeStart:function(swiper){//主页面slide切换完成触发
 			var _Id = mainSwiper.activeIndex;
 			Slide.addAct(_Id);
 			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
-			
+			$('.floorCont').fadeOut();
 			
 			$('.show-slide').removeClass('show-slide');
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
@@ -300,9 +301,13 @@ window.onload = function(){
 				setTimeout(function(){Slide.verifyPage($('.show-slide').attr('data-sysno'),_floorUrl);},500);
 			}
 			else{//加载过，已经在楼层容器中
-				// console.log(1);
+
+				$('.floorCont').hide();
 				$('.show-slide').children('.floorCont').html(_floorCont[_floorArrow.indexOf($('.show-slide').attr('data-sysno'))]);
+				
 				$('#loading-block').hide();
+				$('.show-slide').children('.floorCont').fadeIn();
+				Floor.reDefineSwiper();
 			}
 			imgMark=0;
 			
@@ -319,10 +324,6 @@ window.onload = function(){
 		}
 
 	});
-
-
-
-	
 
 	//楼层商品列表Swiper
 	var dealSwiper = new Swiper('.goods-swiper-container',{
@@ -388,7 +389,6 @@ window.onload = function(){
 				console.log('error'+arguments[1]);
 			},
 			success:function(data){
-				var startDate=new Date();
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
 					if(Floor.SysnoCont.indexOf(obj.ModelSysno)==-1){//新模块则新建一个数组存放模块内容
@@ -405,7 +405,8 @@ window.onload = function(){
 				//2017-8-1 14:05:39  更改楼层装载方式
 				if(!$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).html()){
 					$('.floorCont').html('').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
-					_floorArrow.push(sysNo);
+					$('.floorCont').hide().eq(Slide.navCont.indexOf(+sysNo)+1).fadeIn();
+					_floorArrow.push(sysNo.toString());
 					_floorCont.push(content);
 
 				}
@@ -804,13 +805,13 @@ function goUrl(_this){//一般广告跳转方法
 	IndexStatistics.updateDeviceId();
 	var _data = 
 	{
-		sessionId: $('#token').val(),
-		actionCode: $(_this).attr('data-adPageType')+"_"+$(_this).attr('data-modelSysno')+"_"+$(_this).attr('data-Position')+"_"+$(_this).attr('data-sysno'),
-		source:$('#RouteChannelType').val(),
-		pageCode:$('.slide-nav.active').text(),
-		actionType:'click',
-		data:JSON.stringify({index_sessionId:localStorage.index_sessionId||'unknown',source:$('#RouteChannelType').val(),pageCode:$('.slide-nav.active').text(),sessionId: $('#token').val(),actionCode: $(_this).attr('data-adPageType')+"_"+$(_this).attr('data-modelSysno')+"_"+$(_this).attr('data-Position')+"_"+$(_this).attr('data-sysno'),myDeviceId:IndexStatistics.updateDeviceId(),timestamp: +new Date()}),
-		extraData:JSON.stringify({appName:navigator.appName,appVersion:navigator.appVersion,platform:navigator.platform})
+		SessionId: $('#token').val(),
+		ActionCode: $(_this).attr('data-adPageType')+"_"+$(_this).attr('data-modelSysno')+"_"+$(_this).attr('data-Position')+"_"+$(_this).attr('data-sysno'),
+		Source:$('#RouteChannelType').val(),
+		PageCode:$('.slide-nav.active').text(),
+		ActionType:'click',
+		Data:JSON.stringify({index_sessionId:localStorage.index_sessionId||'unknown',source:$('#RouteChannelType').val(),pageCode:$('.slide-nav.active').text(),sessionId: $('#token').val(),actionCode: $(_this).attr('data-adPageType')+"_"+$(_this).attr('data-modelSysno')+"_"+$(_this).attr('data-Position')+"_"+$(_this).attr('data-sysno'),myDeviceId:IndexStatistics.updateDeviceId(),timestamp: +new Date()}),
+		ExtraData:JSON.stringify({appName:navigator.appName,appVersion:navigator.appVersion,platform:navigator.platform})
 	};
 	 IndexStatistics.Send(_data);
 	 if($(_this).attr('data-link')){
@@ -865,7 +866,7 @@ IndexStatistics.Send = function(md_data) {//提交统计
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            data: md_data
+            data: JSON.stringify(md_data)
         });
 	}
 	catch(e){}
@@ -880,6 +881,13 @@ IndexStatistics.updateDeviceId = function(){//机器唯一识别码
 	}
 	return localStorage.myDeviceId;
 }
+
+if(!localStorage.ifShowGuide){
+	setTimeout(function(){$('#newGuide').show();localStorage.ifShowGuide=true;},700);
+}
+$('#closeGuide').click(function(){
+	$('#newGuide').hide();
+});
 
 
 
