@@ -1,27 +1,25 @@
-
-
-// var _adUrl = '/Home/GetHomeAdvertisement',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-//     _tabUrl = '/Home/GetSecondaryPage',//顶部导航
-//     _dailyDealUrl = '/Home/GetDaypreference',//每日特惠商品列表
-//     _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
-//     _floorUrl = '/Home/GetAdvertisement',//模块楼层
-//     mainSwiper,
-// 	navNameArr= ['首页'] ,
-// 	_oW = document.documentElement.clientWidth,
-// 	_oH = document.documentElement.clientHeight,
-// 	_floorArrow = [],//楼层装载指针
-// 	_floorCont = new Array();//楼层内容容器
-var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
-	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
-	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
-	_tabUrl = 'Home/GetSecondaryPage.json',//顶部导航
-	_dailyDealUrl = 'Home/GetDaypreference.json',//每日特惠商品列表
-	mainSwiper,
+var _adUrl = '/Home/GetHomeAdvertisement',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+    _tabUrl = '/Home/GetSecondaryPage',//顶部导航
+    _dailyDealUrl = '/Home/GetDaypreference',//每日特惠商品列表
+    _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
+    _floorUrl = '/Home/GetAdvertisement',//模块楼层
+    mainSwiper,
 	navNameArr= ['首页'] ,
 	_oW = document.documentElement.clientWidth,
 	_oH = document.documentElement.clientHeight,
 	_floorArrow = [],//楼层装载指针
 	_floorCont = new Array();//楼层内容容器
+// var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
+// 	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
+// 	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
+// 	_tabUrl = 'Home/GetSecondaryPage.json',//顶部导航
+// 	_dailyDealUrl = 'Home/GetDaypreference.json',//每日特惠商品列表
+// 	mainSwiper,
+// 	navNameArr= ['首页'] ,
+// 	_oW = document.documentElement.clientWidth,
+// 	_oH = document.documentElement.clientHeight,
+// 	_floorArrow = [],//楼层装载指针
+// 	_floorCont = new Array();//楼层内容容器
 
 
 
@@ -49,7 +47,7 @@ window.onload = function(){
 		ifClick:false
 	};//Slide小滑条对象
 	Slide.addAct = function(num){//更改激活nav
-		$('.slide-nav').removeClass('active').eq(num).addClass('active');
+		$('.nav-mark').removeClass('active').eq(num).addClass('active');
 	}
 	Slide.navCont = new Array();//新增导航容器
 	$('#navCont').delegate('.slide-nav','click',function(){
@@ -76,7 +74,7 @@ window.onload = function(){
 				// console.log(data);
 				var content="";
 				$.each(data,function(ind,obj){//遍历原始JSON对象
-					content+="<div class=\"swiper-slide slide-nav\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
+					content+="<div class=\"swiper-slide slide-nav nav-mark\" data-sysNo=\""+obj.Sysno+"\"><em></em>"+obj.SecondaryPageName+"</div>";
 					navNameArr.push(obj.SecondaryPageName);//存储页面名称到容器中
 					$('#main-swiper-wrap').append("<div class=\"main-slide swiper-slide\" data-sysNo=\""+obj.Sysno+"\"><div class=\"floorCont\"></div></div>");
 					Slide.navCont.push(obj.Sysno);//导航容器组装
@@ -275,23 +273,16 @@ window.onload = function(){
 		observer:true,
 		touchAngle : 25,
 		observeParents:true,
+		touchReleaseOnEdges:true,
 		onInit: function(swiper){
 			fixViewHeight();
 		},
-		onTouchStart: function(swiper,even){
-			if(mainSwiper.activeIndex!=0){//不在首页时往首页滑动将会将首页bannerz-index设为-1
-				$('#banner-slider-container').css('z-index','-1');
-			}
-	    },
-	    onTouchEnd: function(swiper){
-	    	$('#banner-slider-container').css('z-index','10');
-	    },
 		onSlideChangeStart:function(swiper){//主页面slide切换完成触发
+			$('.nav-mark').removeClass('slide-nav');
+			setTimeout(function(){$('.nav-mark').addClass('slide-nav');},500);
 			var _Id = mainSwiper.activeIndex;
 			Slide.addAct(_Id);
-			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置
-			$('.floorCont').fadeOut();
-			
+			navSwiper.slideTo(_Id-3);//导航slide滑动到相应位置			
 			$('.show-slide').removeClass('show-slide');
 			$('.main-slide.swiper-slide-active').addClass('show-slide');
 			if(!$('.show-slide').children('.floorCont').html()){
@@ -302,11 +293,8 @@ window.onload = function(){
 			}
 			else{//加载过，已经在楼层容器中
 
-				$('.floorCont').hide();
 				$('.show-slide').children('.floorCont').html(_floorCont[_floorArrow.indexOf($('.show-slide').attr('data-sysno'))]);
-				
 				$('#loading-block').hide();
-				$('.show-slide').children('.floorCont').fadeIn();
 				Floor.reDefineSwiper();
 			}
 			imgMark=0;
@@ -321,9 +309,11 @@ window.onload = function(){
 			imgObj=$(".show-slide img");
 			lazyL();
 			Slide.ifClick=false;
+
 		}
 
 	});
+
 
 	//楼层商品列表Swiper
 	var dealSwiper = new Swiper('.goods-swiper-container',{
@@ -405,7 +395,6 @@ window.onload = function(){
 				//2017-8-1 14:05:39  更改楼层装载方式
 				if(!$('.floorCont').eq(Slide.navCont.indexOf(+sysNo)+1).html()){
 					$('.floorCont').html('').eq(Slide.navCont.indexOf(+sysNo)+1).append(content);	//内容装入楼层
-					$('.floorCont').hide().eq(Slide.navCont.indexOf(+sysNo)+1).fadeIn();
 					_floorArrow.push(sysNo.toString());
 					_floorCont.push(content);
 
@@ -787,8 +776,9 @@ window.onload = function(){
 	    else{
 	    	$('#goTop').fadeOut(400); 
 	    }  
-	});
 
+	    	
+	});
 	$('#goTop').on('tap',function(){
 		$('.show-slide').animate({scrollTop:0},400); 
 		$('html,body').animate({scrollTop:0},400); 
@@ -826,8 +816,8 @@ function jumpsearch(sourceObj) {
     if (keyword == "") {
         keyword = $('#keyword').attr("placeholder");
     }
-    var url = "";
-    if ($.trim(keyword) != "") {
+    var url ="";
+    if ($.trim(keyword) !="") {
         url = $(sourceObj).attr("data-src");
         url = url.replace("mykeyword", encodeURIComponent((encodeURIComponent(keyword))));
         //location.href = "/" + Cmb.WebUI.Common.GetChannelType() + "/Product/ProductSearchList?keyword=" + keyword;
@@ -881,15 +871,5 @@ IndexStatistics.updateDeviceId = function(){//机器唯一识别码
 	}
 	return localStorage.myDeviceId;
 }
-
-if(!localStorage.ifShowGuide){
-	setTimeout(function(){$('#newGuide').show();localStorage.ifShowGuide=true;},700);
-}
-$('#closeGuide').click(function(){
-	$('#newGuide').hide();
-});
-
-
-
 
 

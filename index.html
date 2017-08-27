@@ -40,7 +40,7 @@
 	<header id="myNav">
 		<div id="navCont" class="clearfix">
 			<!-- <em id="slide-line"></em> -->
-			<div class="fl slide-nav active" id="indexPage">首页<em></em></div>
+			<div class="fl slide-nav active nav-mark" id="indexPage">首页<em></em></div>
 			<div class="swiper-container nav-swiper-container fl">
 				<div class="swiper-wrapper" id="top-nav">
  
@@ -141,4 +141,18 @@
 	<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="./js/swiper.jquery.min.js"></script>
 	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript">
+		if(!localStorage.ifShowGuide){
+			setTimeout(function(){$('#newGuide').show();localStorage.ifShowGuide=true;},700);
+		}
+		$('#closeGuide').click(function(){
+			$('#newGuide').hide();
+		});
+		//新版指引浮层阻止事件冒泡
+		var _guideBlock = document.getElementById('newGuide');
+		_guideBlock.addEventListener('touchmove',function(event){
+			event.preventDefault();
+		　　event.stopPropagation();
+		});
+	</script>
 </html>
