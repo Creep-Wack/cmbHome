@@ -114,20 +114,28 @@ window.onload = function(){
 						// $('#banner-slider-wrap').append(content);
 					}
 					else if(obj.ModelSysno==-2){//专区图标
+<<<<<<< HEAD
 						content= "<li><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-modelSysno=\"icons\" data-Position="+(iconCounter-0+1)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></li>";
+=======
+						content= "<li><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-adName=\"icons\" data-Position="+(++iconCounter)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></li>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 						$('#nav-tab').append(content);
 						iconCounter++;
 					}
 					else if(obj.ModelSysno==-3){//跑马灯
 						$('#marqueeCont .topline-icon').attr('href',obj.TopLineAppUrl);
+<<<<<<< HEAD
 						content = "<li class=\"swiper-slide\"><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-modelSysno=\"商城头条\" data-Position="+(marqueeCounter-0+1)+" data-link="+obj.AppUrl+">" + obj.AdvertisementName + "</a></li>";
+=======
+						content = "<li class=\"swiper-slide\"><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-adName=\"商城头条\" data-Position="+(++marqueeCounter)+" data-link="+obj.AppUrl+">" + obj.AdvertisementName + "</a></li>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 						$('#marquee-wrap').append(content);
 						$('#marqueeCont').show();
 						marqueeCounter++;
 					}
 					else if(obj.ModelSysno==-4){//每日特惠Banner
 						
-						content = "<div class=\"container h200\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-modelSysno=\"每日特惠横幅\" data-Position=\"0\" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+						content = "<div class=\"container h200\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adName=\"每日特惠横幅\" data-Position=\"0\" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 						if(!counter){
 							$('#dailyDeal-banner').append(content);
 						}
@@ -135,7 +143,11 @@ window.onload = function(){
 					}
 				
 					else if(obj.ModelSysno==-5){//底部TAB
+<<<<<<< HEAD
 						content= "<li><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-modelSysno=\"底部ICON\" data-Position="+(bIconCounter-0+1)+" data-link="+obj.AppUrl+"><img src=\""+obj.ResourceUrl+"\"></a></li>";
+=======
+						content= "<li><a href=\"javascript:void(0)\" onclick=\"goUrl(this)\" data-adName=\"底部ICON\" data-Position="+(++bIconCounter)+" data-link="+obj.AppUrl+"><img src=\""+obj.ResourceUrl+"\"></a></li>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 						$('#footer-wrap').append(content);
 						$('#footer').show();
 						bIconCounter++;
@@ -146,13 +158,21 @@ window.onload = function(){
 					$('#banner-out-wrap').hide();
 				}
 				else if(lunboArr.length==1){//一条首屏轮播
+<<<<<<< HEAD
 					content = "<div class=\"banner-slide swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-modelSysno=\"首页Banner\" data-Position=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
+=======
+					content = "<div class=\"banner-slide swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adName=\"首页Banner\" data-Position=\"0\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 					$('#banner-slider-container').prepend(content);
 				}
 				else{
 					content="<div class=\"swiper-wrapper\" id=\"banner-slider-wrap\">";
 					$.each(lunboArr,function(ind,obj){
+<<<<<<< HEAD
 						content+="<div class=\"banner-slide swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-modelSysno=\"首页Banner\" data-Position="+(ind-0+1)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+=======
+						content+="<div class=\"banner-slide swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adName=\"首页Banner\" data-Position="+ind+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 
 					});
 					content+="</div>";
@@ -193,7 +213,11 @@ window.onload = function(){
 					counter=0;
 				$.each(data,function(ind,obj){//一级遍历原始JSON对象
 					if(counter<6){
+<<<<<<< HEAD
 						content  = "<div class=\"swiper-slide deal-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-modelSysno=\"每日特惠商品\" data-Position="+(ind-0+1)+" data-sysNo="+obj.ProductCode+" data-link="+obj.DaypreferenceLink+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
+=======
+						content  = "<div class=\"swiper-slide deal-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adPageType=\"0\" data-adName=\"每日特惠商品\" data-Position="+ind+" data-sysNo="+obj.ProductCode+" data-link="+obj.DaypreferenceLink+" data-index="+ind+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.DefaultImage+"\"><p class=\"deal-name\">"+obj.ProductName+"</p><p class=\"deal-price\">"+obj.Price+"</p></a></div>";
+>>>>>>> 2d0aa98d3ae76cd3a61d566464df7745a8fba677
 						$('#dailyDealAd').append(content);
 						counter++;
 					}
@@ -305,7 +329,6 @@ window.onload = function(){
 				$('#loading-block').hide();
 				Floor.reDefineSwiper();
 			}
-			imgMark=0;
 			
 			_oScroll =  document.getElementsByClassName('show-slide')[0];
 			if(_oScroll.scrollTop<_oH){//获取当前页面滚动条位置
@@ -806,7 +829,7 @@ function goUrl(_this){//一般广告跳转方法
 		actData = $('.slide-nav.active').text()+"_"+$(_this).attr('data-adName')+"_"+$(_this).attr('data-modelsysno')+"_"+$(_this).attr('data-Position')+"_"+$(_this).attr('data-orderNo')+"_"+$(_this).attr('data-adSysno');
 	}
 	else{
-		actData = $('.slide-nav.active').text()+"_"+$(_this).attr('data-modelsysno')+"_"+$(_this).attr('data-Position');
+		actData = $('.slide-nav.active').text()+"_"+$(_this).attr('data-adName')+"_"+$(_this).attr('data-Position');
 	}
 	var _data = 
 	{
