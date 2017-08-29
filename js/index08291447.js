@@ -300,7 +300,7 @@ window.onload = function(){
 				setTimeout(function(){Slide.verifyPage($('.show-slide').attr('data-sysno'),_floorUrl);},500);
 			}
 			else{//加载过，已经在楼层容器中
-				$('.floorCont').html('');
+
 				$('.show-slide').children('.floorCont').html(_floorCont[_floorArrow.indexOf($('.show-slide').attr('data-sysno'))]);
 				$('#loading-block').hide();
 				Floor.reDefineSwiper();
