@@ -150,12 +150,12 @@ body{
 	}
 	#float_main{
 		position: absolute;
-		width:8rem;
-		height:11rem;
+		width:7.5rem;
+		height:7.5rem;
 		top:50%;
 		left:50%;
-		margin-left:-4rem;
-		margin-top:-5.5rem;
+		margin-left:-3.75rem;
+		margin-top:-3.75rem;
 		overflow:hidden;
 	}
 	#float_main a{

@@ -4,18 +4,19 @@
 //     _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
 //     _floorUrl = '/Home/GetAdvertisement',//模块楼层
 //     mainSwiper,
-// 	navNameArr= ['首页'] ,
-// 	_oW = document.documentElement.clientWidth,
-// 	_oH = document.documentElement.clientHeight,
-// 	_floorArrow = [],//楼层装载指针
-// 	_floorCont = new Array();//楼层内容容器
+// 	   navNameArr= ['首页'] ,
+// 	   _oW = document.documentElement.clientWidth,
+// 	   _oH = document.documentElement.clientHeight,
+// 	   _floorArrow = [],//楼层装载指针
+// 	   _floorCont = new Array();//楼层内容容器
+
 var _statisticsUrl = 'https://ssl.mall.cmbchina.com/sts/api/PageLoger',//数据统计接口
 	_floorUrl = 'Home/GetAdvertisement.json',//模块楼层
 	_adUrl = 'Home/GetHomeAdvertisement.json',//固定位置（顶部轮播通栏、底部导航、跑马灯、每日特惠板块头图、专区图标）
 	_tabUrl = 'Home/GetSecondaryPage.json',//顶部导航
 	_dailyDealUrl = 'Home/GetDaypreference.json',//每日特惠商品列表
 	mainSwiper,
-	navNameArr= ['首页'] ,
+	navNameArr= ['首页'],
 	_oW = document.documentElement.clientWidth,
 	_oH = document.documentElement.clientHeight,
 	_floorArrow = [],//楼层装载指针
@@ -207,6 +208,7 @@ window.onload = function(){
 					slidesPerView:'auto',
 					resistanceRatio : 0
 				});
+				lazyL();
 				
 			}
 		});
@@ -245,7 +247,6 @@ window.onload = function(){
 	   }
 	 } 
 	 //END
-
 
 
 	//弹屏浮层阻止事件冒泡
@@ -423,7 +424,14 @@ window.onload = function(){
 		// console.log(obj);
 		var tailHtml="";
 		var lunboArr = new Array();
-		if(style==1){//横幅模块  1-120楼层标题  2-580高度通栏横幅
+		if(style==8){//弹屏模块
+			if(!localStorage.tipTimeMark||indexGetDate()!=localStorage.tipTimeMark){//弹屏显示验证
+				console.log(obj);
+				indexShowTip(obj[0].ResourceUrl,obj[0].AppUrl);
+				localStorage.tipTimeMark = indexGetDate();
+			}
+		}
+		else if(style==1){//横幅模块  1-120楼层标题  2-580高度通栏横幅
 			$.each(obj,function(k,v){
 				tailHtml = Floor.addTail(style,lastPosition,k,obj);
 				if(lastPosition!=v.Position){//上一步组装元素与当前组装对象非同类型
@@ -870,5 +878,15 @@ IndexStatistics.updateDeviceId = function(){//机器唯一识别码
 	}
 	return localStorage.myDeviceId;
 }
-
-
+function indexGetDate(){//获取日期方法
+	var _d = new Date();
+    var _month = (_d.getMonth()+1).toString().length==2?(_d.getMonth()+1).toString():'0'+(_d.getMonth()+1).toString();
+    var _date = _d.getDate().toString().length==2? _d.getDate().toString():'0'+_d.getDate().toString();
+    var _year = _d.getFullYear().toString();
+    return _year+_month+_date;//返回 YYMMDD格式的字符串日期
+}
+function indexShowTip(img,link){//显示弹屏方法
+	$('#float_main a').attr('href',link);
+	$('#float_main a img').attr('src',img);
+	$('#float_wrap').show();	
+}
