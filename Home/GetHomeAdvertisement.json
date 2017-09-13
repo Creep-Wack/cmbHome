@@ -8,7 +8,7 @@
         "ChannelPath": "_CL5_",
         "BaseBannerLink": "/Category/GetAllCategories",
         "Link": "https://ssl.mall.cmbchina.com/_CL5_/Category/GetAllCategories?channel=_CL5_",
-        "AppUrl": "cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fCategory%2fGetAllCategories%3fchannel%3d_CL5_%26pushwebview%3d1&title=&version=v2",
+        "AppUrl": "http://192.168.103.90/cmbHome/index.html?pageName=eee",
         "BannerLinkSJ": "https://ssl.mall.cmbchina.com/_CL5_/Category/GetAllCategories?channel=_CL5_&popup=true&showtopbar=false",
         "TopLineLink": "https://ssl.mall.cmbchina.com/_CL5_/Promotion/NoticeList?channel=_CL5_",
         "TopLineAppUrl": "cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fPromotion%2fNoticeList%3fchannel%3d_CL5_%26pushwebview%3d1&title=&version=v2",
