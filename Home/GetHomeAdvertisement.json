@@ -250,6 +250,23 @@
         "ResourceUrl": "https://img01.mall.cmbchina.com/uploadimage/homepage/20170814175019-834.15-秋化_1080x580.jpg",
         "Priority": 3,
         "ModelType": 0
+    }, {
+        "AdvertisementName": "欧莱雅年中促销",
+        "AdvertisementPageType": 0,
+        "ModelSysno": -1,
+        "Position": 1,
+        "StartTime": "/Date(1502704255000)/",
+        "ChannelPath": "_CL5_",
+        "BaseBannerLink": "https://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/2017/0814/oly/index.html?pushwebview=1",
+        "Link": "https://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/2017/0814/oly/index.html?pushwebview=1&channel=_CL5_",
+        "AppUrl": "cmblife://go?url=web&next=https%3a%2f%2fimg01.mall.cmbchina.com%2fbanner%2fmall%2fmobile%2flunbo%2f2017%2f0814%2foly%2findex.html%3fpushwebview%3d1%26channel%3d_CL5_&title=&version=v2",
+        "BannerLinkSJ": "https://img01.mall.cmbchina.com/banner/mall/mobile/lunbo/2017/0814/oly/index.html?pushwebview=1&channel=_CL5_&popup=true&showtopbar=false",
+        "TopLineLink": "https://ssl.mall.cmbchina.com/_CL5_/Promotion/NoticeList?channel=_CL5_",
+        "TopLineAppUrl": "cmblife://go?url=web&next=https%3a%2f%2fssl.mall.cmbchina.com%2f_CL5_%2fPromotion%2fNoticeList%3fchannel%3d_CL5_%26pushwebview%3d1&title=&version=v2",
+        "TopLineLinkSJ": "https://ssl.mall.cmbchina.com/_CL5_/Promotion/NoticeList?channel=_CL5_&popup=true&showtopbar=false",
+        "ResourceUrl": "https://img01.mall.cmbchina.com/uploadimage/homepage/20170814175019-834.15-秋化_1080x580.jpg",
+        "Priority": 3,
+        "ModelType": 0
     },
     {
         "AdvertisementName": "8月十全实美",

@@ -426,7 +426,8 @@ window.onload = function(){
 		});		
 	}
 	Floor.loadBlock = function(style,obj){//页面组装	
-		var _html = "<section class=\"container\">";
+
+		var _html = "<section class=\"container\" style=\""+obj[0].ModelStyle+"\">";
 		var counter=0;//当前对象内部计数器
 		var lastPosition=0;//上一个对象类型
 		// console.log(obj);
@@ -446,7 +447,7 @@ window.onload = function(){
 				}
 				if(v.Position==1){//楼层标题
 					lastPosition=v.Position;
-					_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\""+v.ResourceUrl+"\"></div>";
+					_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
 				}
 				else if(v.Position==2){//580高度轮播
 					lastPosition=v.Position;
@@ -458,11 +459,11 @@ window.onload = function(){
 			});
 			if(lunboArr.length==0){}//无轮播
 			else if(lunboArr.length==1){//一条首屏轮播
-				_html+= "<div class=\"h500 fullHeight\" style=\""+lunboArr[0].ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
+				_html+= "<div class=\"h500 fullHeight\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
 				tailHtml="";
 			}
 			else{
-				_html+="<div class=\"swiper-container common-h500-banner container\" style=\""+lunboArr[0].ModelStyle+"\"><div class=\"swiper-wrapper\">";
+				_html+="<div class=\"swiper-container common-h500-banner container\"><div class=\"swiper-wrapper\">";
 				$.each(lunboArr,function(ind,obj){
 					_html += "<div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+obj.Sysno+" data-adName="+obj.AdvertisementName+" data-modelSysno="+obj.ModelSysno+" data-Position="+obj.Position+" data-orderNo="+(ind-0+1)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 				});
@@ -477,7 +478,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 					}
 					else{}
 					
@@ -485,7 +486,7 @@ window.onload = function(){
 				else if(v.Position==2){//540X560高度
 					if(!counter){
 						lastPosition=v.Position;
-						_html += "<div class=\"h560 columns col2 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						_html += "<div class=\"h560 columns col2 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else{}
 				}
@@ -508,13 +509,13 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 					}
 				}
 				else if(v.Position==2){//540X360高度
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
-						_html += "<div class=\"h360 columns col2 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						_html += "<div class=\"h360 columns col2 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter&&counter<4){//限制广告数量4张以内
 						_html += "<a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -539,13 +540,13 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 					}
 				}
 				else if(v.Position==2){//320高度一行四列广告位
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告  2017-7-31 修改class h250-->h320
-						_html += "<div class=\"h320 columns col4 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						_html += "<div class=\"h320 columns col4 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter&&counter<8){//限制广告数量8张以内
 						_html += "<a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -569,13 +570,13 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 					}
 				}
 				else if(v.Position==2){//250高度广告
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
-						_html += "<div class=\"h250 columns col2 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						_html += "<div class=\"h250 columns col2 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter&&counter<8){//限制广告数量8张以内
 						_html += "<a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -597,7 +598,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					if(!counter){
 						lastPosition=v.Position;
-						_html+= "<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
+						_html+= "<div class=\"block-title h120 img_wrap\"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" alt=\"楼层标题\"></div>";
 					}
 				}
 				else if(v.Position==2){//360高度轮播
@@ -609,7 +610,7 @@ window.onload = function(){
 				else if(v.Position==3){//360高度轮播
 					lastPosition=v.Position;
 					if(counter==0){//第一张广告
-						afterHtml += "<div class=\"h420 goods-list-wrap\" style=\""+v.ModelStyle+"\"><div class=\"swiper-container goods-swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" ></a></div>";
+						afterHtml += "<div class=\"h420 goods-list-wrap\"><div class=\"swiper-container goods-swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\" ></a></div>";
 					}
 					else if(counter>0&&counter<6){//限制最多六个商品
 						afterHtml += "<div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a></div>"
@@ -622,11 +623,11 @@ window.onload = function(){
 			});
 			if(lunboArr.length==0){}//无轮播
 			else if(lunboArr.length==1){//一条首屏轮播
-				middleHtml+= "<div class=\"h360 fullHeight\" style=\""+lunboArr[0].ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
+				middleHtml+= "<div class=\"h360 fullHeight\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
 				tailHtml="";
 			}
 			else{
-				middleHtml+="<div class=\"swiper-container common-h360-banner container\" style=\""+lunboArr[0].ModelStyle+"\"><div class=\"swiper-wrapper\">";
+				middleHtml+="<div class=\"swiper-container common-h360-banner container\"><div class=\"swiper-wrapper\">";
 				$.each(lunboArr,function(ind,obj){
 					middleHtml += "<div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+obj.Sysno+" data-adName="+obj.AdvertisementName+" data-modelSysno="+obj.ModelSysno+" data-Position="+obj.Position+" data-orderNo="+(ind-0+1)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 				});
@@ -648,7 +649,7 @@ window.onload = function(){
 				if(v.Position==1){//楼层标题
 					lastPosition=v.Position;
 					// _html+= "<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
-					beforeHtml="<div class=\"block-title h120 img_wrap\" style=\""+v.ModelStyle+"\"><img src=\""+v.ResourceUrl+"\"></div>";
+					beforeHtml="<div class=\"block-title h120 img_wrap\"><img src=\""+v.ResourceUrl+"\"></div>";
 				}
 				else if(v.Position==2){//360高度轮播
 					lastPosition=v.Position;
@@ -660,7 +661,7 @@ window.onload = function(){
 					lastPosition=v.Position;
 					
 					if(counter==0){//第一张540X280高广告位
-						afterHtml += "<div class=\"h280 columns col2 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						afterHtml += "<div class=\"h280 columns col2 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter&&counter<4){//限制广告数量4张以内
 						afterHtml += "<a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -673,7 +674,7 @@ window.onload = function(){
 					lastPosition=v.Position;
 					
 					if(!counter){//第一张270X360高广告位
-						afterHtml += "<div class=\"h360 columns col4 clearfix\" style=\""+v.ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
+						afterHtml += "<div class=\"h360 columns col4 clearfix\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
 					}
 					else if(0<counter&&counter<8){//限制广告数量8张以内
 						afterHtml += "<a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+v.Sysno+" data-adName="+v.AdvertisementName+" data-modelSysno="+v.ModelSysno+" data-Position="+v.Position+" data-orderNo="+(counter-0+1)+" data-link="+v.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+v.ResourceUrl+"\"></a>";
@@ -684,11 +685,11 @@ window.onload = function(){
 			});
 			if(lunboArr.length==0){}//无轮播
 			else if(lunboArr.length==1){//一条首屏轮播
-				middleHtml+= "<div class=\"h360 fullHeight\" style=\""+lunboArr[0].ModelStyle+"\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
+				middleHtml+= "<div class=\"h360 fullHeight\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+lunboArr[0].Sysno+" data-adName="+lunboArr[0].AdvertisementName+" data-modelSysno="+lunboArr[0].ModelSysno+" data-Position="+lunboArr[0].Position+" data-orderNo=\"1\" data-link="+lunboArr[0].AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+lunboArr[0].ResourceUrl+"\"></a></div>";
 				tailHtml="";
 			}
 			else{
-				middleHtml+="<div class=\"swiper-container common-h360-banner container\" style=\""+lunboArr[0].ModelStyle+"\"><div class=\"swiper-wrapper\">";
+				middleHtml+="<div class=\"swiper-container common-h360-banner container\"><div class=\"swiper-wrapper\">";
 				$.each(lunboArr,function(ind,obj){
 					middleHtml += "<div class=\"swiper-slide\"><a href=\"javascript:void(0)\" class=\"img_wrap\" onclick=\"goUrl(this)\" data-adSysno="+obj.Sysno+" data-adName="+obj.AdvertisementName+" data-modelSysno="+obj.ModelSysno+" data-Position="+obj.Position+" data-orderNo="+(ind-0+1)+" data-link="+obj.AppUrl+"><img src=\"https://img01.mall.cmbchina.com/banner/default_02.png\" data-original=\""+obj.ResourceUrl+"\"></a></div>";
 				});

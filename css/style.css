@@ -285,7 +285,9 @@ body{
 		height:5rem;
 	}
 	.banner-pagination,.common-pagination{
-		width: 100%;
+		left: auto!important;
+		right:0.25rem;
+		width:95%!important;
 		position: absolute;
 		bottom:.1rem!important;
 		z-index:10;
@@ -293,19 +295,18 @@ body{
 		text-align: right;
 		transform: translateZ(100px);
 		-webkit-transform: translateZ(100px);
-	}
-	.common-pagination{
-		bottom:.1rem!important;
+		
 	}
 	.common-pagination .swiper-pagination-bullet,.banner-pagination .swiper-pagination-bullet{
 		opacity: 1;
 		border:1px solid #fff;
 		border-radius: 100%;
-		background:none;
+		/*background:none;*/
 		box-sizing: border-box;
 		width:5px;
 		height:5px;
 		margin:0 2px!important;
+		background:rgba(0,0,0,0.6);
 	}
 	.banner-pagination .swiper-pagination-bullet-active{
 		opacity: 1;
@@ -336,7 +337,7 @@ body{
 	#banner-out-wrap .search .search-box{
 		height:100%;
 		line-height:0.89rem;
-		margin:0 2.5rem;
+		margin:0 1.9rem;
 		position: relative;
 	}
 	.search .search-box .text{
@@ -347,12 +348,13 @@ body{
 		line-height:0.89rem;
 		box-sizing: border-box;
 		z-index:10;
-		background:rgba(255,255,255,.8);
+		background:rgba(255,255,255,.85);
 		border-radius:0.9rem;
 		border:none;
 		color:#aaa;
 		outline:none;
 		text-align: center;
+		font-size: 12px;
 	}
 	.search-box .search-btn{
 		position: absolute;
@@ -377,11 +379,23 @@ body{
 
 	/*横栏五列主要入口按钮  */
 	.nav-tab{
-		height:2.3rem;
+		height:2.4rem;
 		text-align: center;
 		box-sizing:border-box;
-		padding:0.3rem 0 0;
+		padding:0.2rem 0 0.2rem;
 		overflow:hidden;
+		position: relative;
+
+	}
+	.nav-tab:after{
+		width: 100%;
+		height:0.3rem;
+		background:#fafafa;
+		display: block;
+		content: '';
+		position: absolute;
+		bottom:0;
+		left:0;
 	}
 	.nav-tab li{
 		float:left;
@@ -421,7 +435,7 @@ body{
 		background-size: 100% auto;
 		top:50%;
 		left:0.6rem;
-		margin-top:-0.18rem;
+		margin-top:-0.16rem;
 	}
 	#marquee .swiper-slide{
 		height:1.2rem!important;
